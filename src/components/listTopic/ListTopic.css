@@ -1,0 +1,36 @@
+.listTopic{
+    width: 70%;
+    margin: auto;
+}
+
+.listTopic table{
+    width: 100%;
+   
+}
+
+.listTopic td, .listTopic th{
+    padding: 5px
+}
+
+
+
+.listTopic .icons{
+    text-align: center;
+}
+
+.listTopic .icons span{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.iconEdit{
+    background-color: rgb(72, 120, 72);
+}
+
+.iconDelete{
+    background-color: rgb(202, 105, 105);
+}

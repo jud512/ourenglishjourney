@@ -1,0 +1,28 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
+enum BookType {
+  BOOK1
+  BOOK2
+  BOOK3
+}
+
+type Topic @model {
+  id: ID!
+  title: String!
+  book: BookType!
+  words: [Word] @hasMany(indexName: "byTopic", fields: ["id"])
+}
+
+type Word @model {
+  id: ID!
+  name: String!
+  speech: String!
+  description: String!
+  pronunciation: String!
+  sound: String
+  example: String
+  topicID: ID! @index(name: "byTopic", sortKeyFields: ["id"])
+}

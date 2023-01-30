@@ -1,0 +1,43 @@
+.createNewVocab {
+    width: 90vw;
+    margin: auto;
+}
+
+.createVocTitle {
+    text-align: center;
+    margin: 50px;
+}
+
+.createNewVoc {
+    width: 500px;
+    margin: auto;
+}
+
+.formItems {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.formItem input {
+    width: 100%;
+}
+
+
+.btnSave {
+    background-color: rgb(95, 36, 95);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
