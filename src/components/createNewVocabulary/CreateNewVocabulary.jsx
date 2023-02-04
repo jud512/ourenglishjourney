@@ -1,64 +1,138 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { createWord } from '../../graphql/mutations';
 import './CreateNewVocabulary.css'
 import { useGlobalContext } from '../../context/context'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { computeHeadingLevel } from '@testing-library/react';
+import axios from 'axios';
 const CreateNewVocabulary = () => {
     const {topics} = useGlobalContext();
     const [book, setBook] = useState('BOOK1');
     const [selectedTopic, setSelectedTopic] = useState('');
     const [selectedTopicId, setSelectedTopicId] = useState('');
+    const [error, setError] = useState('');
+
+    //base-URL
+    const baseURL = 'https://www.dictionaryapi.com/api/v3/references/learners/json/';
+    const API_KEY = 'f1daf546-8127-447b-8e3f-91d940cf45d6'
+    const [word, setWord] = useState('');
+    
+    //data in the form
+    const [formDataWord, setFormDataWord] = useState({
+        name:"",
+        speech:"",
+        description:"",
+        pronunciation:"",
+        sound:"",
+        topicID:""
+    })
+
+    //data from fetching
+    const [data, setData] = useState();
+    const [dataWord, setDataWord] = useState({
+        name:"",
+        speech:"",
+        description:"",
+        pronunciation:"",
+        sound:"",
+        
+    })
+
+    const handleChangeWord = (e) => {
+        setWord(e.target.value)
+        setError('')
+    }
+
+        const fetchData = async () => {
+            try {
+                const res = await axios.get(`${baseURL}${word}?key=${API_KEY}`);
+                setData(res.data[0]);
+                setDataWord({
+                    name : dataWord,
+                    speech: res.data[0].fl ? res.data[0].fl : "",
+                    description: res.data[0].shortdef[0] ? res.data[0].shortdef[0] : "",
+                    pronunciation:res.data[0].hwi.prs[0].ipa ? res.data[0].hwi.prs[0].ipa : "",
+                    sound:res.data[0].hwi.prs[0].sound.audio ? res.data[0].hwi.prs[0].sound.audio : "",
+                    // example:res.data[0].def[0].sseq[0][0][1].dt[2][1][0].t ? res.data[0].def[0].sseq[0][0][1].dt[2][1][0].t : "",
+
+                })
+            } catch(error){
+                console.log('NOT FETCHING',error)
+                setError("I can't find the word.")
+            }
+        }
+        
+
+    console.log('DATAWORD',dataWord);
 
     const handleChangeTopic = (e) => {
         setSelectedTopic(e.target.value);
         const foundItem = topics.find(item => item.title === selectedTopic);
         setBook(foundItem.book);
         setSelectedTopicId(foundItem.id);
+
     }
+
     useEffect(() => {
         setBook(topics[0]?.book);
         setSelectedTopic(topics[0]?.title);
         setSelectedTopicId(topics[0]?.id);
     }, [topics])
-    //TODO!!!!!!!!!!!
-    const createNewWord = async (e) => {
-        e.preventDefault();
-        const {target} = e;
+
+    const createNewWord = async () => {
         try {
             const result = API.graphql(
                 graphqlOperation(createWord, {
-                    input:{
-                        // name: target.wordName,
-                        // speech: target.speechName,
-                        // description: target.descName,
-                        // pronunciation: target.pronName,
-                        // sound: target.soundName,
-                        // example: target.exampleName,
-                        // topicId: selectedTopic,
-                        name: 'amphibian',
-                        speech: 'noun',
-                        description: "an animal of a class that typically lives in water when young and develops lungs as an adult, including frogs, toads, and salamanders",
-                        pronunciation: 'æm.ˈfɪ.biən',
-                        // sound: target.soundName,
-                        // example: target.exampleName,
-                        topicId: '583dc218-97ed-40cb-85c8-d1631c09a1e6',
+                    input:{                        
+                        name: word,
+                        speech: formDataWord.speech,
+                        description: formDataWord.description,
+                        pronunciation: formDataWord.pronunciation,                        
+                        topicID: selectedTopicId,
                     }
                 })
             )
             // console.log(target)
-            console.log(result)
+            console.log('RESULT',result)
         } catch (error) {
             console.log('WORD NOT SAVED', error)
         }
     }
-    console.log('SELECTED',selectedTopicId)
+
+    const handleClickSave = (e) => {
+        e.preventDefault();
+        createNewWord();
+    }
+
+    const handleCheckDictionary = (e) => {
+        e.preventDefault();
+        fetchData();
+
+    }
+
+    const handleWordFormChange = (e) => {
+        setFormDataWord({...formDataWord, [e.target.name]: e.target.value})
+    }
+
+    useEffect(() => {
+        setFormDataWord({
+            name: dataWord.name,
+            speech: dataWord.speech,
+            description: dataWord.description,
+            pronunciation: dataWord.pronunciation,
+            sound: dataWord.sound,
+        })
+    }, [dataWord])
+    // console.log('SELECTED',selectedTopicId)
+    // console.log('DATA', data);
+    console.log('FORMDATAWORD', formDataWord);
     return (
         <div className='createNewVocab'>
             <h1 className='createVocTitle'>Add New Word To The Vocabulary</h1>
             <div className="createNewVoc">
-                    <form action="" className='formItems'>
+                    <form  className='formItems'>
                         <div className="formItem">
                             <label htmlFor="topic">Topic</label>
                             <select id="topic" name="topic" onChange={handleChangeTopic}>
@@ -77,19 +151,33 @@ const CreateNewVocabulary = () => {
                         </div>
                             <div className="formItem">
                                 <label htmlFor="newword">Word</label>
-                                <input type="text" id='newword' name='wordName'/>
+                                <input type="text" id='newword' name='wordName' value={word} onChange={handleChangeWord}/>
                             </div>
+                            <button style={{backgroundColor:'green', color:'white', border:'none', height:'30px'}} onClick={handleCheckDictionary}>Check the database</button>
+
+                            { 
+                            error ? <p>{error}</p> : 
+                            <div className="fetchData" style={{backgroundColor:"gray", color: 'white'}}>
+                                <p>{dataWord.description}</p>
+                                <p>{dataWord.pronunciation}</p>
+                                <p>{dataWord.speech}</p>
+                                <p>{dataWord.sound}</p>
+                                
+                            </div>
+                            }
+
+
                             <div className="formItem">
                                 <label htmlFor="speech">Speech</label>
-                            <input type="text" id='speech' name='speechName'/>
+                            <input type="text" id='speech' name='speech' value={formDataWord.speech} onChange={handleWordFormChange}/>
                             </div>
                             <div className="formItem"> 
                                 <label htmlFor="pron">Pronunciation</label>
-                                <input type="text" id='pron' name='pronName'/>
+                                <input type="text" id='pron' name='pronunciation' value={formDataWord.pronunciation} onChange={handleWordFormChange}/>
                             </div>
                             <div className="formItem">
                                 <label htmlFor="desc">Description</label>
-                                <textarea id='desc' rows="10" cols="30" name='descName'/>
+                                <textarea id='desc' rows="10" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
                             </div>
                             
                             <div className="formItem">
@@ -98,12 +186,15 @@ const CreateNewVocabulary = () => {
                             </div>
                             <div className="formItem">
                                 <label htmlFor="sound">Sound</label>
-                                <input type="text" id='sound' name='souondName' />
+                                <input type="text" id='sound' name='sound' value={formDataWord.sound} onChange={handleWordFormChange}/>
                             </div>
                             
-                    <button type='submit' className='btnSave' onClick={createNewWord}>Save it into the database</button>
+                    <button className='btnSave' onClick={handleClickSave}>Save it into the database</button>
                 </form>
             </div>
+
+
+
             
         </div>
     )

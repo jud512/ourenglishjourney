@@ -7,7 +7,7 @@ export const getTopic = /* GraphQL */ `
       id
       title
       book
-      words {
+      WordTopic {
         items {
           id
           name
@@ -38,7 +38,7 @@ export const listTopics = /* GraphQL */ `
         id
         title
         book
-        words {
+        WordTopic {
           nextToken
         }
         createdAt
@@ -58,6 +58,16 @@ export const getWord = /* GraphQL */ `
       pronunciation
       sound
       example
+      TopicWord {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       topicID
       createdAt
       updatedAt
@@ -79,6 +89,13 @@ export const listWords = /* GraphQL */ `
         pronunciation
         sound
         example
+        TopicWord {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
         topicID
         createdAt
         updatedAt
@@ -87,18 +104,16 @@ export const listWords = /* GraphQL */ `
     }
   }
 `;
-export const wordsByTopicIDAndId = /* GraphQL */ `
-  query WordsByTopicIDAndId(
+export const wordsByTopicID = /* GraphQL */ `
+  query WordsByTopicID(
     $topicID: ID!
-    $id: ModelIDKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelWordFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    wordsByTopicIDAndId(
+    wordsByTopicID(
       topicID: $topicID
-      id: $id
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -112,6 +127,13 @@ export const wordsByTopicIDAndId = /* GraphQL */ `
         pronunciation
         sound
         example
+        TopicWord {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
         topicID
         createdAt
         updatedAt

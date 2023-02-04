@@ -7,7 +7,7 @@ export const onCreateTopic = /* GraphQL */ `
       id
       title
       book
-      words {
+      WordTopic {
         items {
           id
           name
@@ -33,7 +33,7 @@ export const onUpdateTopic = /* GraphQL */ `
       id
       title
       book
-      words {
+      WordTopic {
         items {
           id
           name
@@ -59,7 +59,7 @@ export const onDeleteTopic = /* GraphQL */ `
       id
       title
       book
-      words {
+      WordTopic {
         items {
           id
           name
@@ -89,6 +89,16 @@ export const onCreateWord = /* GraphQL */ `
       pronunciation
       sound
       example
+      TopicWord {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       topicID
       createdAt
       updatedAt
@@ -105,6 +115,16 @@ export const onUpdateWord = /* GraphQL */ `
       pronunciation
       sound
       example
+      TopicWord {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       topicID
       createdAt
       updatedAt
@@ -121,6 +141,16 @@ export const onDeleteWord = /* GraphQL */ `
       pronunciation
       sound
       example
+      TopicWord {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       topicID
       createdAt
       updatedAt

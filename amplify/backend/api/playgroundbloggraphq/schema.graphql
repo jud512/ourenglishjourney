@@ -13,7 +13,7 @@ type Topic @model {
   id: ID!
   title: String!
   book: BookType!
-  words: [Word] @hasMany(indexName: "byTopic", fields: ["id"])
+  WordTopic: [Word] @hasMany(indexName: "byTopic", fields: ["id"])
 }
 
 type Word @model {
@@ -24,5 +24,6 @@ type Word @model {
   pronunciation: String!
   sound: String
   example: String
-  topicID: ID! @index(name: "byTopic", sortKeyFields: ["id"])
+  TopicWord: Topic @belongsTo
+  topicID: ID! @index(name: "byTopic")
 }
