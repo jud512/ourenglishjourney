@@ -6,6 +6,10 @@ import { listWords, wordsByTopicID } from '../../graphql/queries'
 import {useGlobalContext} from '../../context/context'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md';
 import {AiFillSound} from 'react-icons/ai'
+import { deleteWord } from '../../graphql/mutations';
+import Modal from '../modal/Modal';
+import CreateNewVocabulary from "../createNewVocabulary/CreateNewVocabulary";
+import EditWord from '../editWord/EditWord';
 
 const ListVocabulary = () => {
     const { topics } = useGlobalContext();
@@ -19,9 +23,35 @@ const ListVocabulary = () => {
         setSelectedTopicId(e.target.value);
     }
 
-    const handleDeleteWord = () => {
-
+    //DELETE
+    const deleteWordInApp = (id) => {
+        const newWords = words.filter(item => item.id !== id)
+        setWords(newWords);
     }
+
+    const deleteWordInDatabase = async (id) => {
+        try{
+            await API.graphql(graphqlOperation(deleteWord, { input: {id: id}}))
+        }
+        catch(error){
+            console.log('WORD NOT DELETED');
+        }
+    }
+
+    const handleDeleteWord = (id) => {
+        deleteWordInDatabase(id);
+        deleteWordInApp(id);
+    }
+    //EDIT
+    const [showEditWord, setShowEditWord] = useState(false);
+    const [editedWord, setEditedWord] = useState({});
+
+    const clickEditIcon = (item) => {
+        setShowEditWord(true);
+        setEditedWord(item);
+    }
+
+    //FETCHING
 
 
     const fetchWords = async () => {
@@ -50,9 +80,12 @@ const ListVocabulary = () => {
 
     useEffect(() => {
         // fetchWords();
-        fetchWordsByTopicID();
-        
-    }, [selectedTopicId])
+        fetchWordsByTopicID();        
+    }, [selectedTopicId]);
+
+    useEffect(() => {
+
+    }, [words])
 
     
 
@@ -99,7 +132,8 @@ const ListVocabulary = () => {
                                 item.audio.play()
                             }}/></td>
                             <td className='icons'>
-                                <span className='iconEdit'><MdOutlineEdit/></span>
+                                <span className='iconEdit'
+                                onClick={() => clickEditIcon(item)}><MdOutlineEdit/></span>
                                 <span className='iconDelete' onClick={() => handleDeleteWord(item.id)}><MdDeleteOutline/></span>
                             </td>
                         </tr>
@@ -107,6 +141,13 @@ const ListVocabulary = () => {
                 }
             </tbody>
         </table>
+
+        {
+            showEditWord && <Modal 
+                level={2} 
+                shouldShowModal={showEditWord} 
+                onRequestClose={() => setShowEditWord(false)} children={<EditWord item={editedWord}/>} />
+        }
     </div>
   )
 }

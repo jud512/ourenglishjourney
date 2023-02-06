@@ -17,10 +17,11 @@
 
 .modal-container{
     width: 80%;
+    min-height: 100%;
     margin:auto;
     padding: 20px;
     background-color: white;
-    border-radius: 20px;
+    
 }
 .modal-close-icon{
     cursor: pointer;

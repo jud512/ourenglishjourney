@@ -21,17 +21,11 @@ const Vocabulary = () => {
         <div className="vocabulary-list" onClick={() => setShouldShowListVocab(true)}>
             <span>List Vocabulary</span>
         </div>
-    
-            <Link to="/">
-                <div className="vocabulary-edit">
-                    <span>Edit Vocabulary</span> 
-                </div>
-            </Link>
-            <Link to="/">
-                <div className="vocabulary-learn">
-                    <span>Learn Vocabulary</span> 
-                </div>
-            </Link>
+
+        <div className="vocabulary-learn">
+            <span>Learn Vocabulary</span> 
+        </div>
+
         </div>
 
         {shouldShowCreateVocab && <Modal shouldShowModal={shouldShowCreateVocab} onRequestClose={() => setShouldShowCreateVocab(false)} children={<CreateNewVocabulary />}/>}

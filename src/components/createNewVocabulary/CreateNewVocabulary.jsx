@@ -88,7 +88,7 @@ const CreateNewVocabulary = () => {
 
     const createNewWord = async () => {
         try {
-            const result = API.graphql(
+            const result = await API.graphql(
                 graphqlOperation(createWord, {
                     input:{                        
                         name: word,
