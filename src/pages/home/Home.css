@@ -1,0 +1,35 @@
+.home{
+    text-align: center;
+}
+
+.home-greeting{
+    font-size: 40px;
+}
+
+.home-greeting span{
+    text-transform: capitalize;
+}
+
+.home-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.home-application, .home-vocabulary{
+    width: 200px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: 500;
+}
+
+.home-application{
+    background-color: rgb(157, 121, 14);
+}
+.home-vocabulary{
+    background-color: rgb(76, 35, 115);
+}

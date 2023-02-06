@@ -1,7 +1,10 @@
 import { Amplify, API, graphqlOperation } from "aws-amplify";
+import { Authenticator } from "@aws-amplify/ui-react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 import { createTopic } from "./graphql/mutations";
 import { listTopics } from "./graphql/queries";
 import awsconfig from "./aws-exports";
+import "@aws-amplify/ui-react/styles.css";
 import { useEffect } from "react";
 import CreateNewVocabulary from "./components/createNewVocabulary/CreateNewVocabulary";
 import CreateNewTopic from "./components/createNewTopic/CreateNewTopic";
@@ -10,6 +13,11 @@ import React from "react";
 import { useState } from "react";
 import { useGlobalContext } from "./context/context";
 import { fetchTopics } from "./fetchData/fetchingFunc";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
+import Home from "./pages/home/Home";
+import Vocabulary from "./pages/vocabulary/Vocabulary";
+import "./App.css";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -28,18 +36,31 @@ const createTopicData = async () => {
   }
 };
 
-function App() {
+function App(isPassedToWithAuthenticator, signOut, user) {
+  if (!isPassedToWithAuthenticator) {
+    throw new Error(`isPassedToWithAuthenticator was not provided`);
+  }
+
   const { topics } = useGlobalContext();
 
   console.log("TOPICS", topics);
   return (
-    <div className="App">
-      <h1>Try Creating a Dictionary using Amplify, GraphQl and so on...</h1>
-      <CreateNewTopic />
-      <ListTopic />
-      <CreateNewVocabulary />
-    </div>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout user={user.username} />}>
+              <Route index element={<Home user={user.username} />} />
+              <Route
+                path="vocabulary"
+                element={<Vocabulary user={user.username} />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      )}
+    </Authenticator>
   );
 }
 
-export default App;
+export default withAuthenticator(App);

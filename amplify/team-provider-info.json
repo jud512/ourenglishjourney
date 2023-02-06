@@ -13,7 +13,24 @@
     },
     "categories": {
       "api": {
-        "playgroundbloggraphq": {}
+        "playgroundbloggraphq": {},
+        "AdminQueries": {}
+      },
+      "auth": {
+        "playgroundbloggraphqlproject": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries8139a74d": {
+          "deploymentBucketName": "amplify-playgroundbloggraphq-dev-102728-deployment",
+          "s3Key": "amplify-builds/AdminQueries8139a74d-76354871457449787037-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2mdx3pvd9iu8o",
+          "type": "manual"
+        }
       }
     }
   }
