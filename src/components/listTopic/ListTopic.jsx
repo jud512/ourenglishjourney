@@ -19,7 +19,7 @@ const ListTopic = () => {
         setTopics(topics.data.listTopics.items)
         console.log((topics.data.listTopics.items))
     } catch (error) {
-        console.log('TOPICS NOT FEATCHED', error)
+        console.log('TOPICS NOT FETCHED', error)
     }
     }
 

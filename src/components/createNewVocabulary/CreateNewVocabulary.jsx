@@ -7,12 +7,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { computeHeadingLevel } from '@testing-library/react';
 import axios from 'axios';
+import Modal from '../modal/Modal';
+import Message from '../message/Message';
 const CreateNewVocabulary = () => {
     const {topics} = useGlobalContext();
     const [book, setBook] = useState('BOOK1');
     const [selectedTopic, setSelectedTopic] = useState('');
     const [selectedTopicId, setSelectedTopicId] = useState('');
     const [error, setError] = useState('');
+
+    const [showMessageOK, setShowMessageOK] = useState(false);
 
     //base-URL
     const baseURL = 'https://www.dictionaryapi.com/api/v3/references/learners/json/';
@@ -26,6 +30,7 @@ const CreateNewVocabulary = () => {
         description:"",
         pronunciation:"",
         sound:"",
+        example:"",
         topicID:""
     })
 
@@ -65,7 +70,7 @@ const CreateNewVocabulary = () => {
         }
         
 
-    console.log('DATAWORD',dataWord);
+    // console.log('DATAWORD',dataWord);
 
     const handleChangeTopic = (e) => {
         setSelectedTopic(e.target.value);
@@ -89,13 +94,15 @@ const CreateNewVocabulary = () => {
                         name: word,
                         speech: formDataWord.speech,
                         description: formDataWord.description,
-                        pronunciation: formDataWord.pronunciation,                        
+                        pronunciation: formDataWord.pronunciation,  
+                        example: formDataWord.example,    
+                        sound: formDataWord.sound,                  
                         topicID: selectedTopicId,
                     }
                 })
             )
             // console.log(target)
-            console.log('RESULT',result)
+            // console.log('RESULT',result)
         } catch (error) {
             console.log('WORD NOT SAVED', error)
         }
@@ -104,6 +111,17 @@ const CreateNewVocabulary = () => {
     const handleClickSave = (e) => {
         e.preventDefault();
         createNewWord();
+        setShowMessageOK(true);
+        setFormDataWord({
+            name:"",
+            speech:"",
+            description:"",
+            pronunciation:"",
+            sound:"",
+            example:"",
+            topicID:""
+        });
+        setWord("");
     }
 
     const handleCheckDictionary = (e) => {
@@ -127,7 +145,7 @@ const CreateNewVocabulary = () => {
     }, [dataWord])
     // console.log('SELECTED',selectedTopicId)
     // console.log('DATA', data);
-    console.log('FORMDATAWORD', formDataWord);
+    // console.log('FORMDATAWORD', formDataWord);
     return (
         <div className='createNewVocab'>
             <h1 className='createVocTitle'>Add New Word To The Vocabulary</h1>
@@ -144,7 +162,7 @@ const CreateNewVocabulary = () => {
                             </select>
                             
                         </div>
-                        <p>TopicID: {selectedTopicId}</p>
+                        {/* <p>TopicID: {selectedTopicId}</p> */}
                         <div className="formItem">
                             <span>Book</span>
                             <span>{book}</span>
@@ -155,7 +173,11 @@ const CreateNewVocabulary = () => {
                             </div>
                             <button style={{backgroundColor:'green', color:'white', border:'none', height:'30px'}} onClick={handleCheckDictionary}>Check the database</button>
 
-                            { 
+                            
+                            {
+                                error && <p>{error}</p>
+                            }
+                            {/* { 
                             error ? <p>{error}</p> : 
                             <div className="fetchData" style={{backgroundColor:"gray", color: 'white'}}>
                                 <p>{dataWord.description}</p>
@@ -164,7 +186,7 @@ const CreateNewVocabulary = () => {
                                 <p>{dataWord.sound}</p>
                                 
                             </div>
-                            }
+                            } */}
 
 
                             <div className="formItem">
@@ -182,7 +204,7 @@ const CreateNewVocabulary = () => {
                             
                             <div className="formItem">
                                 <label htmlFor="example">Example</label>
-                                <input type="text" id='example' name='exampleName' />
+                                <input type="text" id='example' name='example' value={formDataWord.example} onChange={handleWordFormChange}/>
                             </div>
                             <div className="formItem">
                                 <label htmlFor="sound">Sound</label>
@@ -192,6 +214,11 @@ const CreateNewVocabulary = () => {
                     <button className='btnSave' onClick={handleClickSave}>Save it into the database</button>
                 </form>
             </div>
+
+            { showMessageOK && <Modal shouldShowModal={showMessageOK} onRequestClose={() => setShowMessageOK(false)} level={2} children={
+                <Message message="The Word Is Created." onRequestClose={() => setShowMessageOK(false)}/>
+            }/>}
+
 
 
 

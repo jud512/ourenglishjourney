@@ -1,0 +1,29 @@
+.modal{
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(147, 147, 147);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.modal-z{
+    z-index: 60;
+}
+
+.modal-container{
+    width: 80%;
+    margin:auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+.modal-close-icon{
+    cursor: pointer;
+    text-align: right;
+    font-size: 30px;
+}

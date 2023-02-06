@@ -1,0 +1,10 @@
+.message button{
+    width: 50px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

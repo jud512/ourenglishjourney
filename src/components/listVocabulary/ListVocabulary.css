@@ -1,0 +1,60 @@
+.listVocabulary {
+    width: 100%;
+    margin: auto;
+}
+
+.listVocabulary-form{
+    margin-bottom: 20px;
+}
+
+.listVocabulary table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.listVocabulary th{
+    background-color: rgb(80, 101, 80);
+    color:white;
+    letter-spacing: 2px;
+}
+
+.listVocabulary td,
+.listVocabulary th {
+    padding: 10px;
+    border: solid 1px lightgray;
+    
+}
+
+.listVocab-align-left{
+    text-align: left;
+}
+
+.listVocabulary .icons {
+    text-align: center;
+}
+
+.listVocabulary .icons span {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.iconEdit {
+    background-color: rgb(72, 120, 72);
+}
+
+.iconDelete {
+    background-color: rgb(202, 105, 105);
+}
+
+.icon-listening{
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}

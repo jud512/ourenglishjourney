@@ -43,7 +43,8 @@ function App(isPassedToWithAuthenticator, signOut, user) {
 
   const { topics } = useGlobalContext();
 
-  console.log("TOPICS", topics);
+  // console.log("TOPICS", topics);
+
   return (
     <Authenticator>
       {({ signOut, user }) => (
@@ -55,6 +56,10 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                 path="vocabulary"
                 element={<Vocabulary user={user.username} />}
               />
+              {/* <Route
+                path="vocabularycreate"
+                element={<Modal children={<h1>I'm a child</h1>} />}
+              /> */}
             </Route>
           </Routes>
         </BrowserRouter>
