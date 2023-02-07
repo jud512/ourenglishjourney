@@ -3,10 +3,10 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import './Layout.css'
 
-const Layout = ({user}) => {
+const Layout = ({user, signOut}) => {
     return(
         <div className="layout">
-            <Navbar user={user}/>
+            <Navbar user={user} signOut={signOut}/>
             <Outlet />
             
         </div>

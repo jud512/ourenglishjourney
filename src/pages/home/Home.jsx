@@ -2,7 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
-const Home = ({user}) => {
+const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
+    if (!isPassedToWithAuthenticator) {
+        throw new Error(`isPassedToWithAuthenticator was not provided`);
+    }
+    console.log(userAll.signInUserSession.accessToken.payload["cognito:groups"]);
+    console.log(userAll);
   return (
     <div className="home">
         {<div className='home-greeting'>Welcome dear <span>{user}</span>  on my WebSite!</div>}

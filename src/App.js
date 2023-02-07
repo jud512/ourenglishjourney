@@ -47,11 +47,24 @@ function App(isPassedToWithAuthenticator, signOut, user) {
 
   return (
     <Authenticator>
-      {({ signOut, user }) => (
+      {({ signOut, user, group }) => (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout user={user.username} />}>
-              <Route index element={<Home user={user.username} />} />
+            <Route
+              path="/"
+              element={<Layout user={user.username} signOut={signOut} />}
+            >
+              <Route
+                index
+                element={
+                  <Home
+                    user={user.username}
+                    userAll={user}
+                    isPassedToWithAuthenticator={isPassedToWithAuthenticator}
+                    signOut={signOut}
+                  />
+                }
+              />
               <Route
                 path="vocabulary"
                 element={<Vocabulary user={user.username} />}
