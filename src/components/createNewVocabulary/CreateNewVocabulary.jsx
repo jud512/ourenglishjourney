@@ -7,10 +7,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { computeHeadingLevel } from '@testing-library/react';
 import axios from 'axios';
-import Modal from '../modal/Modal';
+import ModalTop from '../modal/ModalTop';
 import Message from '../message/Message';
 const CreateNewVocabulary = () => {
-    const {topics} = useGlobalContext();
+    const {topics, user} = useGlobalContext();
     const [book, setBook] = useState('BOOK1');
     const [selectedTopic, setSelectedTopic] = useState('');
     const [selectedTopicId, setSelectedTopicId] = useState('');
@@ -71,12 +71,9 @@ const CreateNewVocabulary = () => {
         
 
     // console.log('DATAWORD',dataWord);
-
+        // console.log("FORMDATA", formDataWord)
     const handleChangeTopic = (e) => {
-        setSelectedTopic(e.target.value);
-        const foundItem = topics.find(item => item.title === selectedTopic);
-        setBook(foundItem.book);
-        setSelectedTopicId(foundItem.id);
+        setSelectedTopic(e.target.value);        
 
     }
 
@@ -85,6 +82,12 @@ const CreateNewVocabulary = () => {
         setSelectedTopic(topics[0]?.title);
         setSelectedTopicId(topics[0]?.id);
     }, [topics])
+
+    useEffect(() => {
+        const foundItem = topics.find(item => item.title === selectedTopic);
+        setBook(foundItem?.book);
+        setSelectedTopicId(foundItem?.id);
+    }, [selectedTopic])
 
     const createNewWord = async () => {
         try {
@@ -98,6 +101,7 @@ const CreateNewVocabulary = () => {
                         example: formDataWord.example,    
                         sound: formDataWord.sound,                  
                         topicID: selectedTopicId,
+                        username: user.username
                     }
                 })
             )
@@ -136,6 +140,7 @@ const CreateNewVocabulary = () => {
 
     useEffect(() => {
         setFormDataWord({
+            ...formDataWord,
             name: dataWord.name,
             speech: dataWord.speech,
             description: dataWord.description,
@@ -199,7 +204,7 @@ const CreateNewVocabulary = () => {
                             </div>
                             <div className="formItem">
                                 <label htmlFor="desc">Description</label>
-                                <textarea id='desc' rows="10" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
+                                <textarea id='desc' rows="5" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
                             </div>
                             
                             <div className="formItem">
@@ -215,7 +220,7 @@ const CreateNewVocabulary = () => {
                 </form>
             </div>
 
-            { showMessageOK && <Modal shouldShowModal={showMessageOK} onRequestClose={() => setShowMessageOK(false)} level={2} children={
+            { showMessageOK && <ModalTop shouldShowModal={showMessageOK} onRequestClose={() => setShowMessageOK(false)} children={
                 <Message message="The Word Is Created." onRequestClose={() => setShowMessageOK(false)}/>
             }/>}
 

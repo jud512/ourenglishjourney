@@ -10,7 +10,7 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
     console.log(userAll);
   return (
     <div className="home">
-        {<div className='home-greeting'>Welcome dear <span>{user}</span>  on my WebSite!</div>}
+        {<div className='home-greeting'>Welcome on my WebSite, dear <span>{user}</span>!</div>}
         <p>We're going to have so much fun together during our English Journey.</p>
         <p>Please choose from the options below!</p>
         <div className="home-options">

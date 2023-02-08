@@ -1,19 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './EditWord.css'
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { updateWord } from '../../graphql/mutations';
+import {useGlobalContext} from '../../context/context'
+import { useNavigate, useParams } from 'react-router-dom';
+import ModalTop from '../modal/ModalTop';
+import Message from '../message/Message';
 
 
-const EditWord = ({item}) => {
+const EditWord = () => {
+    const {words} = useGlobalContext();
+    const wordId = useParams();
+    const wordEdited = words.find(item => item.id === wordId.edit)
     const [word, setWord] = useState({
-        id: item.id,
-        name: item.name,
-        speech: item.speech,
-        description: item.description,
-        pronunciation: item.pronunciation,
-        sound: item.sound,
-        example: item.example,
+        id: "",
+        name: "",
+        speech: "",
+        description: "",
+        pronunciation: "",
+        sound: "",
+        example: "",
     })
+
+    const [showMessageOK, setShowMessageOK] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setWord({
+            id: wordEdited?.id || "",
+            name: wordEdited?.name || "",
+            speech: wordEdited?.speech || "",
+            description: wordEdited?.description || "",
+            pronunciation: wordEdited?.pronunciation || "",
+            sound: wordEdited?.sound || "",
+            example: wordEdited?.example || "",
+        })
+    }, [wordEdited])
 
     const handleWordFormChange = (e) => {
         setWord({...word, [e.target.name]: e.target.value})
@@ -26,7 +48,7 @@ const EditWord = ({item}) => {
             const result = await API.graphql(graphqlOperation(updateWord, { input: {
                 id: word.id,
                 name: word.name,
-                speech: word.speech,
+                speech: word.speech ,
                 description: word.description,
                 pronunciation: word.pronunciation,
                 example: word.example
@@ -42,8 +64,13 @@ const EditWord = ({item}) => {
     const handleClickSave = (e) => {
         e.preventDefault();
         editWordInDatabase();
+        setShowMessageOK(true);
     }
-    console.log('TRY EDIT: ', item)
+    // console.log('TRY EDIT: ', item)
+    // console.log(wordId.edit);
+    // console.log(words);
+    // console.log(wordEdited);
+    // console.log('WORD', word);
   return (
     <div className='editword'>
         <h1>EditWord</h1>
@@ -75,7 +102,9 @@ const EditWord = ({item}) => {
             <button className='btnSave' style={{width:'300px', margin: '10px auto'}}onClick={handleClickSave}>Save it into the database</button>
 
         </form>
-        
+        { showMessageOK && <ModalTop shouldShowModal={showMessageOK} onRequestClose={() => setShowMessageOK(false)} children={
+                <Message message="The Word Is Edited." onRequestClose={() => {setShowMessageOK(false); navigate("/vocabulary/listvocabulary")}}/>
+            }/>}
     </div>
   )
 }

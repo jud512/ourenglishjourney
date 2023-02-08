@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const AppContext = createContext();
 
-const AppProvider = ({ children }) => {
+const AppProvider = ({ children, user, signOut }) => {
   const [topics, setTopics] = useState([]);
   const [words, setWords] = useState([]);
 
@@ -24,6 +24,7 @@ const AppProvider = ({ children }) => {
     try {
       const result = await API.graphql(graphqlOperation(listWords));
       console.log("RESULT WORDS", result.data.listWords.items);
+      setWords(result.data.listWords.items);
     } catch (error) {
       console.log("WORDS NOT FETCHED", error);
     }
@@ -33,9 +34,10 @@ const AppProvider = ({ children }) => {
     fetchTopics();
     fetchWords();
   }, []);
+  // console.log("USER", user);
 
   return (
-    <AppContext.Provider value={{ topics, setTopics }}>
+    <AppContext.Provider value={{ topics, setTopics, user, signOut, words }}>
       {children}
     </AppContext.Provider>
   );

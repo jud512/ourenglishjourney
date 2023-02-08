@@ -10,10 +10,11 @@ import { deleteWord } from '../../graphql/mutations';
 import Modal from '../modal/Modal';
 import CreateNewVocabulary from "../createNewVocabulary/CreateNewVocabulary";
 import EditWord from '../editWord/EditWord';
+import { Link } from 'react-router-dom';
 
 const ListVocabulary = () => {
-    const { topics } = useGlobalContext();
-    const [selectedTopicId, setSelectedTopicId] = useState(topics[0].id);
+    const { topics, user } = useGlobalContext();
+    const [selectedTopicId, setSelectedTopicId] = useState(topics[0]?.id || "");
 
     const url = 'https://media.merriam-webster.com/audio/prons/en/us/mp3';
 
@@ -38,9 +39,15 @@ const ListVocabulary = () => {
         }
     }
 
-    const handleDeleteWord = (id) => {
-        deleteWordInDatabase(id);
-        deleteWordInApp(id);
+    const handleDeleteWord = (id, username) => {
+        if(username === user.username){
+            deleteWordInDatabase(id);
+            deleteWordInApp(id);
+        }
+        else{
+            console.log('NINCS JOGOSULTSÁGOD TÖRÖLNI!!!')
+        }
+        
     }
     //EDIT
     const [showEditWord, setShowEditWord] = useState(false);
@@ -54,16 +61,16 @@ const ListVocabulary = () => {
     //FETCHING
 
 
-    const fetchWords = async () => {
-        try{
-            const words = await API.graphql(graphqlOperation(listWords));
-            setWords(words.data.listWords.items);
-            console.log(words.data.listWords.items)
-        }
-        catch(error){
-            console.log('WORDS NOT FETCHED!', error)
-        }
-    }
+    // const fetchWords = async () => {
+    //     try{
+    //         const words = await API.graphql(graphqlOperation(listWords));
+    //         setWords(words.data.listWords.items);
+    //         console.log(words.data.listWords.items)
+    //     }
+    //     catch(error){
+    //         console.log('WORDS NOT FETCHED!', error)
+    //     }
+    // }
     const fetchWordsByTopicID = async () => {
         try{
             const words = await API.graphql(
@@ -116,11 +123,12 @@ const ListVocabulary = () => {
                     <th>Example</th>
                     <th>Sound</th>
                     <th>Operations</th>
+                    <th>Username</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    words.map(item => (
+                    words.filter(item => (item.username === user.username || user.username==='judit') ).map(item => (
                         <tr key={item.id}>
                             {/* <td>{item.id}</td> */}
                             <td>{item.name}</td>
@@ -132,10 +140,20 @@ const ListVocabulary = () => {
                                 item.audio.play()
                             }}/></td>
                             <td className='icons'>
-                                <span className='iconEdit'
-                                onClick={() => clickEditIcon(item)}><MdOutlineEdit/></span>
-                                <span className='iconDelete' onClick={() => handleDeleteWord(item.id)}><MdDeleteOutline/></span>
+                                {user.username === item.username && 
+                                    <>
+                                    <Link to={item.id}>
+                                        <span className='iconEdit'
+                                    ><MdOutlineEdit/></span>
+                                    </Link>
+                                    <span className='iconDelete' onClick={() => handleDeleteWord(item.id, item.username)}><MdDeleteOutline/></span>
+                                    </>
+                                        
+                                    
+                                }
+                                
                             </td>
+                            <td style={{textTransform:"capitalize"}}>{item.username}</td>
                         </tr>
                     ))
                 }

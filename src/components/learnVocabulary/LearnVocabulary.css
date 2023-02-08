@@ -1,0 +1,35 @@
+.learnVocabulary{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardsContainer {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    position: relative;
+}
+
+.card .back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+.z-index{
+    z-index: -1;
+}
+
+.leftArrow,
+.rightArrow {
+    cursor: pointer;
+    font-size: 30px;
+}

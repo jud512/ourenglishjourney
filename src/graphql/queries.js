@@ -17,6 +17,7 @@ export const getTopic = /* GraphQL */ `
           sound
           example
           topicID
+          username
           createdAt
           updatedAt
         }
@@ -69,6 +70,7 @@ export const getWord = /* GraphQL */ `
         updatedAt
       }
       topicID
+      username
       createdAt
       updatedAt
     }
@@ -97,6 +99,7 @@ export const listWords = /* GraphQL */ `
           updatedAt
         }
         topicID
+        username
         createdAt
         updatedAt
       }
@@ -135,6 +138,7 @@ export const wordsByTopicID = /* GraphQL */ `
           updatedAt
         }
         topicID
+        username
         createdAt
         updatedAt
       }

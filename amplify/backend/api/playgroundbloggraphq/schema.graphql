@@ -26,4 +26,5 @@ type Word @model {
   example: String
   TopicWord: Topic @belongsTo
   topicID: ID! @index(name: "byTopic")
+  username: String
 }

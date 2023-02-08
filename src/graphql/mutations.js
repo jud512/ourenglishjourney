@@ -20,6 +20,7 @@ export const createTopic = /* GraphQL */ `
           sound
           example
           topicID
+          username
           createdAt
           updatedAt
         }
@@ -49,6 +50,7 @@ export const updateTopic = /* GraphQL */ `
           sound
           example
           topicID
+          username
           createdAt
           updatedAt
         }
@@ -78,6 +80,7 @@ export const deleteTopic = /* GraphQL */ `
           sound
           example
           topicID
+          username
           createdAt
           updatedAt
         }
@@ -112,6 +115,7 @@ export const createWord = /* GraphQL */ `
         updatedAt
       }
       topicID
+      username
       createdAt
       updatedAt
     }
@@ -141,6 +145,7 @@ export const updateWord = /* GraphQL */ `
         updatedAt
       }
       topicID
+      username
       createdAt
       updatedAt
     }
@@ -170,6 +175,7 @@ export const deleteWord = /* GraphQL */ `
         updatedAt
       }
       topicID
+      username
       createdAt
       updatedAt
     }

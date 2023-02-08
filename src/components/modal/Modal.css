@@ -13,6 +13,7 @@
 }
 .modal-z{
     z-index: 60;
+    background-color: green;
 }
 
 .modal-container{
@@ -23,8 +24,11 @@
     background-color: white;
     
 }
+
 .modal-close-icon{
     cursor: pointer;
     text-align: right;
     font-size: 30px;
+    
+
 }

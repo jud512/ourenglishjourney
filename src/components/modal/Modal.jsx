@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import './Modal.css'
 import { MdClose } from 'react-icons/md'
 
-const Modal = ({shouldShowModal, onRequestClose, children, level}) => {
+const Modal = ({ shouldShowModal, onRequestClose, children, level, direct}) => {
     //level === 1 --> first level modal
     //level === 2 --> second level modal
-  return (
-    <div className={level === 1 ? "modal" : "modal modal-z"} onClick={(e) => e.stopPropagation()}>
+  return shouldShowModal && (
+    <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+          <Link to={direct}>
             <div className="modal-close-icon" onClick={onRequestClose}>
                 <MdClose />                
             </div>
+          </Link>
             { children }
         </div>
     </div>

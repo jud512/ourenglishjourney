@@ -17,7 +17,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Home from "./pages/home/Home";
 import Vocabulary from "./pages/vocabulary/Vocabulary";
+import Modal from "./components/modal/Modal";
+import EditWord from "./components/editWord/EditWord";
+
+import { AppProvider } from "./context/context";
 import "./App.css";
+import ListVocabulary from "./components/listVocabulary/ListVocabulary";
+import LearnVocabulary from "./components/learnVocabulary/LearnVocabulary";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -41,41 +47,91 @@ function App(isPassedToWithAuthenticator, signOut, user) {
     throw new Error(`isPassedToWithAuthenticator was not provided`);
   }
 
-  const { topics } = useGlobalContext();
+  // const { topics } = useGlobalContext();
 
   // console.log("TOPICS", topics);
 
   return (
     <Authenticator>
-      {({ signOut, user, group }) => (
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={<Layout user={user.username} signOut={signOut} />}
-            >
+      {({ signOut, user }) => (
+        <AppProvider user={user} signOut={signOut}>
+          <BrowserRouter>
+            <Routes>
               <Route
-                index
-                element={
-                  <Home
-                    user={user.username}
-                    userAll={user}
-                    isPassedToWithAuthenticator={isPassedToWithAuthenticator}
-                    signOut={signOut}
-                  />
-                }
-              />
-              <Route
-                path="vocabulary"
-                element={<Vocabulary user={user.username} />}
-              />
-              {/* <Route
+                path="/"
+                element={<Layout user={user.username} signOut={signOut} />}
+              >
+                <Route
+                  index
+                  element={
+                    <Home
+                      user={user.username}
+                      userAll={user}
+                      isPassedToWithAuthenticator={isPassedToWithAuthenticator}
+                      signOut={signOut}
+                    />
+                  }
+                />
+                <Route
+                  path="vocabulary"
+                  element={<Vocabulary user={user.username} />}
+                />
+                <Route
+                  path="vocabulary/createvocabulary"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/vocabulary"
+                    >
+                      <CreateNewVocabulary />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="vocabulary/listvocabulary"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/vocabulary"
+                    >
+                      <ListVocabulary />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="vocabulary/listvocabulary/:edit"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/vocabulary"
+                    >
+                      <EditWord />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="vocabulary/learnvocabulary"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/vocabulary"
+                    >
+                      <LearnVocabulary />
+                    </Modal>
+                  }
+                />
+                {/* <Route
                 path="vocabularycreate"
                 element={<Modal children={<h1>I'm a child</h1>} />}
               /> */}
-            </Route>
-          </Routes>
-        </BrowserRouter>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </AppProvider>
       )}
     </Authenticator>
   );
