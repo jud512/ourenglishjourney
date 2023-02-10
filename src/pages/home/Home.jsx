@@ -7,9 +7,10 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
         throw new Error(`isPassedToWithAuthenticator was not provided`);
     }
     const groups = userAll.signInUserSession.accessToken.payload["cognito:groups"];
-    const isAdmin = groups[0] === 'admin';
-    console.log('GROUPS:', groups[0]);
-    console.log(userAll);
+    const isAdmin = groups ? groups[0] === 'admin' : false;
+    // console.log('GROUPS:', groups[0]);
+    // console.log(groups)
+    // console.log(userAll);
   return (
     <div className="home">
         {<div className='home-greeting'>Welcome on my WebSite, dear <span>{user}</span>!</div>}

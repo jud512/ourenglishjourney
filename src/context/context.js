@@ -14,7 +14,7 @@ const AppProvider = ({ children, user, signOut }) => {
   const fetchTopics = async () => {
     try {
       const result = await API.graphql(graphqlOperation(listTopics));
-      console.log("RESULT TOPICS", result);
+      // console.log("RESULT TOPICS", result);
       setTopics(result.data.listTopics.items);
     } catch (error) {
       console.log("TOPICS NOT FEATCHED", error);
@@ -24,7 +24,7 @@ const AppProvider = ({ children, user, signOut }) => {
   const fetchWords = async () => {
     try {
       const result = await API.graphql(graphqlOperation(listWords));
-      console.log("RESULT WORDS", result.data.listWords.items);
+      // console.log("RESULT WORDS", result.data.listWords.items);
       setWords(result.data.listWords.items);
     } catch (error) {
       console.log("WORDS NOT FETCHED", error);
@@ -71,8 +71,8 @@ const AppProvider = ({ children, user, signOut }) => {
             : item;
         });
         setTopics(newTopics);
-        console.log("NEW TOPICS", newTopics);
-        console.log("ID:", value.data.onUpdateTopic.id);
+        // console.log("NEW TOPICS", newTopics);
+        // console.log("ID:", value.data.onUpdateTopic.id);
       }
     },
     error: (error) => console.warn(error),
@@ -87,7 +87,7 @@ const AppProvider = ({ children, user, signOut }) => {
   // subscription2.unsubscribe();
   // subscription3.unsubscribe();
 
-  console.log("TOPICS FROM CONTEXT", topics);
+  // console.log("TOPICS FROM CONTEXT", topics);
   // console.log("USER", user);
 
   return (
