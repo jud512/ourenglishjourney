@@ -53,6 +53,7 @@ const CreateNewTopic = () => {
                                 <option value="BOOK1" >BOOK1</option>
                                 <option value="BOOK2" >BOOK2</option>
                                 <option value="BOOK3" >BOOK3</option>
+                                <option value="NO_BOOK" >NO_BOOK</option>
                             </select>
                         </div>                     
                         

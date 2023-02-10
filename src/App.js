@@ -24,6 +24,8 @@ import { AppProvider } from "./context/context";
 import "./App.css";
 import ListVocabulary from "./components/listVocabulary/ListVocabulary";
 import LearnVocabulary from "./components/learnVocabulary/LearnVocabulary";
+import Topic from "./pages/topic/Topic";
+import { EditTopic } from "./components/editTopic/EditTopic";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -106,7 +108,7 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                     <Modal
                       level={1}
                       shouldShowModal={true}
-                      direct="/vocabulary"
+                      direct="/vocabulary/listvocabulary"
                     >
                       <EditWord />
                     </Modal>
@@ -124,10 +126,35 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                     </Modal>
                   }
                 />
-                {/* <Route
-                path="vocabularycreate"
-                element={<Modal children={<h1>I'm a child</h1>} />}
-              /> */}
+                <Route path="topic" element={<Topic />} />
+                <Route
+                  path="topic/createtopic"
+                  element={
+                    <Modal level={1} shouldShowModal={true} direct="/topic">
+                      <CreateNewTopic />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="topic/listtopic"
+                  element={
+                    <Modal level={1} shouldShowModal={true} direct="/topic">
+                      <ListTopic />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="topic/listtopic/:edit"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/topic/listtopic"
+                    >
+                      <EditTopic />
+                    </Modal>
+                  }
+                />
               </Route>
             </Routes>
           </BrowserRouter>

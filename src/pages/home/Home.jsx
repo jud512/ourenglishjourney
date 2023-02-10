@@ -6,7 +6,9 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
     if (!isPassedToWithAuthenticator) {
         throw new Error(`isPassedToWithAuthenticator was not provided`);
     }
-    console.log(userAll.signInUserSession.accessToken.payload["cognito:groups"]);
+    const groups = userAll.signInUserSession.accessToken.payload["cognito:groups"];
+    const isAdmin = groups[0] === 'admin';
+    console.log('GROUPS:', groups[0]);
     console.log(userAll);
   return (
     <div className="home">
@@ -24,6 +26,15 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
                     Vocabulary
                 </div>
             </Link>
+            {
+                isAdmin && 
+                <Link to="/topic">
+                    <div className="home-topics">
+                        Topics
+                    </div>
+                </Link>
+            }
+            
         </div>
     </div>
     

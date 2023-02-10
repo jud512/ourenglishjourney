@@ -7,6 +7,7 @@ import { useState } from 'react';
 import {MdOutlineEdit, MdDeleteOutline} from 'react-icons/md'
 import { deleteTopic } from '../../graphql/mutations';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const ListTopic = () => {
@@ -68,7 +69,9 @@ const ListTopic = () => {
                         <td>{item.title}</td>
                         <td>{item.book}</td>
                         <td className='icons'>
+                            <Link to={item.id}>
                             <span className='iconEdit'><MdOutlineEdit/></span>
+                            </Link>
                             <span className='iconDelete' onClick={() => handleDeleteTopic(item.id)}><MdDeleteOutline/></span>
                         </td>
                     </tr>

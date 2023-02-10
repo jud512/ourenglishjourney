@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 
 const ListVocabulary = () => {
     const { topics, user } = useGlobalContext();
-    const [selectedTopicId, setSelectedTopicId] = useState(topics[0]?.id || "");
+    const [selectedTopicId, setSelectedTopicId] = useState("");
 
     const url = 'https://media.merriam-webster.com/audio/prons/en/us/mp3';
 
@@ -91,8 +91,8 @@ const ListVocabulary = () => {
     }, [selectedTopicId]);
 
     useEffect(() => {
-
-    }, [words])
+        setSelectedTopicId(topics[0]?.id)
+    }, [topics])
 
     
 
@@ -136,7 +136,7 @@ const ListVocabulary = () => {
                             <td>{item.pronunciation}</td>
                             <td className='listVocab-align-left'>{item.description}</td>
                             <td className='listVocab-align-left'>{item.example}</td>
-                            <td className="icon-listening"><AiFillSound className={item.sound ? "" : "hidden"} onClick={() => {
+                            <td className="icon-listening" style={{textAlign:'center'}}><AiFillSound className={item.sound ? "" : "hidden"} onClick={() => {
                                 item.audio.play()
                             }}/></td>
                             <td className='icons'>

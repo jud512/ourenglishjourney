@@ -1,7 +1,8 @@
 import React, { useState, createContext } from "react";
 import { useContext } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { listTopics, listWords } from "../graphql/queries";
+import * as subscriptions from "../graphql/subscriptions";
 import { useEffect } from "react";
 
 const AppContext = createContext();
@@ -30,10 +31,63 @@ const AppProvider = ({ children, user, signOut }) => {
     }
   };
 
+  const subscription = API.graphql(
+    graphqlOperation(subscriptions.onCreateTopic)
+  ).subscribe({
+    next: ({ provider, value }) => {
+      console.log({ provider, value });
+      if (value) {
+        setTopics([...topics, value.data.onCreateTopic]);
+      }
+    },
+    error: (error) => console.warn(error),
+  });
+
+  const subscription2 = API.graphql(
+    graphqlOperation(subscriptions.onDeleteTopic)
+  ).subscribe({
+    next: ({ provider, value }) => {
+      console.log({ provider, value });
+      if (value) {
+        const newTopics = topics.filter(
+          (item) => item.id !== value.data.onDeleteTopic.id
+        );
+        setTopics(newTopics);
+        console.log("NEW TOPICS", newTopics);
+        console.log("ID:", value.data.onDeleteTopic.id);
+      }
+    },
+    error: (error) => console.warn(error),
+  });
+  const subscription3 = API.graphql(
+    graphqlOperation(subscriptions.onUpdateTopic)
+  ).subscribe({
+    next: ({ provider, value }) => {
+      console.log({ provider, value });
+      if (value) {
+        const newTopics = topics.map((item) => {
+          return item.id === value.data.onUpdateTopic.id
+            ? value.data.onUpdateTopic
+            : item;
+        });
+        setTopics(newTopics);
+        console.log("NEW TOPICS", newTopics);
+        console.log("ID:", value.data.onUpdateTopic.id);
+      }
+    },
+    error: (error) => console.warn(error),
+  });
+
   useEffect(() => {
     fetchTopics();
     fetchWords();
   }, []);
+
+  // subscription.unsubscribe();
+  // subscription2.unsubscribe();
+  // subscription3.unsubscribe();
+
+  console.log("TOPICS FROM CONTEXT", topics);
   // console.log("USER", user);
 
   return (

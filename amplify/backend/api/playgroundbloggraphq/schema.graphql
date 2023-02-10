@@ -7,6 +7,7 @@ enum BookType {
   BOOK1
   BOOK2
   BOOK3
+  NO_BOOK
 }
 
 type Topic @model {
