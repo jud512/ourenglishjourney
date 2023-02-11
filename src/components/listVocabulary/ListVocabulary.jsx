@@ -94,8 +94,6 @@ const ListVocabulary = () => {
         setSelectedTopicId(topics[0]?.id)
     }, [topics])
 
-    
-
   return (
     <div className='listVocabulary'>
         <h1>The List of Words</h1>
@@ -128,7 +126,7 @@ const ListVocabulary = () => {
             </thead>
             <tbody>
                 {
-                    words.filter(item => (item.username === user.username || user.username==='judit') ).map(item => (
+                    words.filter(item => (item.username === user.username || item.username ==='judit') ).map(item => (
                         <tr key={item.id}>
                             {/* <td>{item.id}</td> */}
                             <td>{item.name}</td>

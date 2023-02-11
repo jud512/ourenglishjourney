@@ -102,5 +102,39 @@
       "service": "amplifyhosting",
       "type": "manual"
     }
+  },
+  "parameters": {
+    "AMPLIFY_function_AdminQueries8139a74d_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries8139a74d"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries8139a74d_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries8139a74d"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    }
   }
 }
