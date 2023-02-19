@@ -19,13 +19,16 @@ import Home from "./pages/home/Home";
 import Vocabulary from "./pages/vocabulary/Vocabulary";
 import Modal from "./components/modal/Modal";
 import EditWord from "./components/editWord/EditWord";
+import Application from "./pages/application/Application";
 
 import { AppProvider } from "./context/context";
 import "./App.css";
 import ListVocabulary from "./components/listVocabulary/ListVocabulary";
 import LearnVocabulary from "./components/learnVocabulary/LearnVocabulary";
+import GameWithWords from "./components/gameWithWords/GameWithWords";
 import Topic from "./pages/topic/Topic";
 import { EditTopic } from "./components/editTopic/EditTopic";
+import ShowWordExplainMeaning from "./pages/showWordExplainMeaning/ShowWordExplainMeaning";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -152,6 +155,26 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                       direct="/topic/listtopic"
                     >
                       <EditTopic />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="application"
+                  element={<Application user={user.username} />}
+                />
+                <Route
+                  path="application/showwordexplainmeaning"
+                  element={<ShowWordExplainMeaning user={user.username} />}
+                />
+                <Route
+                  path="application/showwordexplainmeaning/game"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/application/showwordexplainmeaning"
+                    >
+                      <GameWithWords />
                     </Modal>
                   }
                 />

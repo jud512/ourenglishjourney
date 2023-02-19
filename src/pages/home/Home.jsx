@@ -17,7 +17,7 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
         <p>We're going to have so much fun together during our English Journey.</p>
         <p>Please choose from the options below!</p>
         <div className="home-options">
-            <Link to="/">
+            <Link to="/application">
                 <div className="home-application">
                     Applications
                 </div>
