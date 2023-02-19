@@ -9,9 +9,9 @@ const GameWithWords = ({words, number}) => {
     <div className='gameWithWords'>
       <div className="gameWithWords-container">
         {
-          words.map(item => 
+          words.map((item, idx) => 
             <>
-              <SingleCardOneSide item={item} type="w" />
+              <SingleCardOneSide item={item} type="w" count={idx + 1}/>
             </>)
         }
       </div>
