@@ -12,6 +12,7 @@ import CreateNewVocabulary from "../createNewVocabulary/CreateNewVocabulary";
 import EditWord from '../editWord/EditWord';
 import { Link } from 'react-router-dom';
 
+
 const ListVocabulary = () => {
     const { topics, user } = useGlobalContext();
     const [selectedTopicId, setSelectedTopicId] = useState("");
@@ -19,6 +20,8 @@ const ListVocabulary = () => {
     const url = 'https://media.merriam-webster.com/audio/prons/en/us/mp3';
 
     const [words, setWords] = useState([]);
+
+    const {isAdmin} = useGlobalContext();
 
     const handleChangeTopic = (e) => {
         setSelectedTopicId(e.target.value);
@@ -126,6 +129,30 @@ const ListVocabulary = () => {
             </thead>
             <tbody>
                 {
+                    isAdmin ? 
+                    words.map(item => (
+                        <tr key={item.id}>
+                            {/* <td>{item.id}</td> */}
+                            <td>{item.name}</td>
+                            <td>{item.speech}</td>
+                            <td>{item.pronunciation}</td>
+                            <td className='listVocab-align-left'>{item.description}</td>
+                            <td className='listVocab-align-left'>{item.example}</td>
+                            <td className="icon-listening" style={{textAlign:'center'}}><AiFillSound className={item.sound ? "" : "hidden"} onClick={() => {
+                                item.audio.play()
+                            }}/></td>
+                            <td className='icons'>
+                                <Link to={item.id}>
+                                        <span className='iconEdit'
+                                    ><MdOutlineEdit/></span>
+                                </Link>
+                                <span className='iconDelete' onClick={() => handleDeleteWord(item.id, item.username)}><MdDeleteOutline/></span>
+
+                            </td>
+                            <td style={{textTransform:"capitalize"}}>{item.username}</td>
+                        </tr>
+                    ))
+                    : 
                     words.filter(item => (item.username === user.username || item.username ==='judit') ).map(item => (
                         <tr key={item.id}>
                             {/* <td>{item.id}</td> */}

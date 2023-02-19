@@ -1,0 +1,25 @@
+.formSelectTopic-container{
+    width: 600px;
+    margin: 30px auto;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: rgb(232, 201, 144);
+}
+
+.formSelectTopic-item{
+    margin: 10px;
+}
+
+.formBtn{
+    background-color: rgb(198, 145, 20);
+    display: block;
+    border: none;
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin: 20px auto 0 auto;
+    
+}

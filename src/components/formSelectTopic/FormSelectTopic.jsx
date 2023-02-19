@@ -6,6 +6,8 @@ import Modal from '../modal/Modal';
 import * as queries from '../../graphql/queries';
 import { API, graphqlOperation} from 'aws-amplify';
 
+import './FormSelectTopic.css';
+
 const FormSelectTopic = () => {
     const {topics} = useGlobalContext();
 
@@ -83,18 +85,16 @@ const FormSelectTopic = () => {
         <form className="formSelectTopic-form">
             <div className="formSelectTopic-item">
                 <label htmlFor="formSelectNumber-number">How many words would you like to practice?</label>
-                <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countWords}/>
+                <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countWords} style={{width:"50px", textAlign:"center", marginLeft:"10px"}}/>
             </div>
             <div className="formSelectNumber-item">
                 <label htmlFor="topics">Please, choose a topic!</label>
-                <select id="topics" name="topics" value={selectedTopicId} onChange={handleTopicChange}>
+                <select id="topics" name="topics" value={selectedTopicId} onChange={handleTopicChange} style={{marginLeft:'10px'}}>
                     {
                         topics.map(item => (
                             <option key={item.id} value={item.id}>{item.title}</option>
                         ))
                     }
-                    
-                    
                 </select>
             </div>
             <div className="formWordNumberItem" style={{alignSelf:'flex-end'}}>

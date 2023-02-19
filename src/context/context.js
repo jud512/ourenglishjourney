@@ -11,6 +11,9 @@ const AppProvider = ({ children, user, signOut }) => {
   const [topics, setTopics] = useState([]);
   const [words, setWords] = useState([]);
 
+  const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+  const isAdmin = groups ? groups[0] === "admin" : false;
+
   const fetchTopics = async () => {
     try {
       const result = await API.graphql(graphqlOperation(listTopics));
@@ -91,7 +94,9 @@ const AppProvider = ({ children, user, signOut }) => {
   // console.log("USER", user);
 
   return (
-    <AppContext.Provider value={{ topics, setTopics, user, signOut, words }}>
+    <AppContext.Provider
+      value={{ topics, setTopics, user, signOut, words, isAdmin }}
+    >
       {children}
     </AppContext.Provider>
   );

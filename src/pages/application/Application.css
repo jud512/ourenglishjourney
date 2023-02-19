@@ -1,0 +1,21 @@
+.application{
+    width: 80vw;
+    margin: auto;
+}
+.application-items{
+    margin: 20px auto;
+}
+
+.application-item{
+    width: 250px;
+    height: 150px;
+    background-color: rgb(193, 107, 107);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+}
