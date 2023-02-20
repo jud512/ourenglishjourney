@@ -7,7 +7,7 @@ const ShowWordExplainMeaning = () => {
     <div className='showWordExplainMeaning'>
       <h1>Show Word, Explain Meaning!</h1>
         
-        <FormSelectTopic />
+        <FormSelectTopic appName="showwordexplainmeaning"/>
     </div>
   )
 }

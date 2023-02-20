@@ -4,12 +4,17 @@
 }
 .application-items{
     margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .application-item{
     width: 250px;
     height: 150px;
     background-color: rgb(193, 107, 107);
+    
     display: flex;
     justify-content: center;
     align-items: center;

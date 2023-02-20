@@ -10,8 +10,12 @@ const Application = () => {
             <div className="application-item">
               <Link to="/application/showwordexplainmeaning" style={{color:"inherit"}}>
                 Show Word, Explain Meaning!
-              </Link>
-                
+              </Link>                
+            </div>
+            <div className="application-item" style={{backgroundColor:"rgb(104, 136, 93)"}}>
+              <Link to="/application/showdescriptionexplainmeaning" style={{color:"inherit"}}>
+                Show Description, Explain Meaning!
+              </Link>                
             </div>
         </div>
     </div>

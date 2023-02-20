@@ -29,6 +29,7 @@ import GameWithWords from "./components/gameWithWords/GameWithWords";
 import Topic from "./pages/topic/Topic";
 import { EditTopic } from "./components/editTopic/EditTopic";
 import ShowWordExplainMeaning from "./pages/showWordExplainMeaning/ShowWordExplainMeaning";
+import ShowDescriptionExplainMeaning from "./pages/showDescriptionExplainMeaning/ShowDescriptionExplainMeaning";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -176,6 +177,12 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                     >
                       <GameWithWords />
                     </Modal>
+                  }
+                />
+                <Route
+                  path="application/showdescriptionexplainmeaning"
+                  element={
+                    <ShowDescriptionExplainMeaning user={user.username} />
                   }
                 />
               </Route>

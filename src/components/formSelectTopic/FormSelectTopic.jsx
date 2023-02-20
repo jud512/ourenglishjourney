@@ -7,8 +7,9 @@ import * as queries from '../../graphql/queries';
 import { API, graphqlOperation} from 'aws-amplify';
 
 import './FormSelectTopic.css';
+import ApplicationController from '../applicationController/ApplicationController';
 
-const FormSelectTopic = () => {
+const FormSelectTopic = ({appName}) => {
     const {topics} = useGlobalContext();
 
     const [words, setWords] = useState([]);
@@ -106,15 +107,11 @@ const FormSelectTopic = () => {
         {
             isStart &&
 
-            <Modal
-                level={1}
-                shouldShowModal={isStart}
-                direct="/application/showwordexplainmeaning"
-                onRequestClose={() => setIsStart(false)}
-            >
-                <GameWithWords words={words} number={countWords}/>
-            </Modal>
+            <ApplicationController appName={appName} isStart={isStart} onRequestClose={() => setIsStart(false)} words={words} number={countWords}/>
         }
+
+            
+        
          
     </div>
   )
