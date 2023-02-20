@@ -43,7 +43,7 @@ const ListVocabulary = () => {
     }
 
     const handleDeleteWord = (id, username) => {
-        if(username === user.username){
+        if(username === user.username || isAdmin){
             deleteWordInDatabase(id);
             deleteWordInApp(id);
         }

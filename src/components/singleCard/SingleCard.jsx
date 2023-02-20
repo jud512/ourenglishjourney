@@ -7,18 +7,18 @@ const SingleCard = ({item,  handleItemSelect, selectWords, currentIdx}) => {
     const [showBack, setShowBack] = useState(false);
     return (
     
-        <div className='item' key={item.id}>            
+        <div className='item-single-card' key={item.id}>            
             <div className="turnCard" onClick={() => setShowBack(!showBack)}><GiReturnArrow /></div>
                 <div className="item-content">
                     <div className={ showBack ? "back showback" : "back"}>                
-                        <p className='desc'>{item.description}</p>
-                        <p className='desc'>{item.example}</p>
+                        <p >{item.description}</p>
+                        <p >{item.example}</p>
                     </div> 
                     <div className='front'>              
 
                         <p className='word'>{ item.name }</p>                      
-                        <p className='speech'>{item.speech}</p>
-                        <p className='pron'>/{item.pronunciation}/</p>
+                        <p >{item.speech}</p>
+                        <p >/{item.pronunciation}/</p>
                         {
                             item.sound  &&
                                 <p className='soundIcon'><AiFillSound onClick={() => {
