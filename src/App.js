@@ -32,6 +32,7 @@ import { EditTopic } from "./components/editTopic/EditTopic";
 import ShowWordExplainMeaning from "./pages/showWordExplainMeaning/ShowWordExplainMeaning";
 import ShowDescriptionExplainMeaning from "./pages/showDescriptionExplainMeaning/ShowDescriptionExplainMeaning";
 import Picture from "./pages/picture/Picture";
+import ListPictures from "./components/listPictures/ListPictures";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -171,6 +172,14 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                   element={
                     <Modal level={1} shouldShowModal={true} direct="/picture">
                       <CreateNewPicture />
+                    </Modal>
+                  }
+                />
+                <Route
+                  path="picture/listpicture"
+                  element={
+                    <Modal level={1} shouldShowModal={true} direct="/picture">
+                      <ListPictures />
                     </Modal>
                   }
                 />
