@@ -26,6 +26,16 @@ export const createTopic = /* GraphQL */ `
         }
         nextToken
       }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -51,6 +61,16 @@ export const updateTopic = /* GraphQL */ `
           example
           topicID
           username
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
           createdAt
           updatedAt
         }
@@ -86,6 +106,16 @@ export const deleteTopic = /* GraphQL */ `
         }
         nextToken
       }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -109,6 +139,9 @@ export const createWord = /* GraphQL */ `
         title
         book
         WordTopic {
+          nextToken
+        }
+        PictureTopic {
           nextToken
         }
         createdAt
@@ -141,6 +174,9 @@ export const updateWord = /* GraphQL */ `
         WordTopic {
           nextToken
         }
+        PictureTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -171,11 +207,95 @@ export const deleteWord = /* GraphQL */ `
         WordTopic {
           nextToken
         }
+        PictureTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       topicID
       username
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createPicture = /* GraphQL */ `
+  mutation CreatePicture(
+    $input: CreatePictureInput!
+    $condition: ModelPictureConditionInput
+  ) {
+    createPicture(input: $input, condition: $condition) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePicture = /* GraphQL */ `
+  mutation UpdatePicture(
+    $input: UpdatePictureInput!
+    $condition: ModelPictureConditionInput
+  ) {
+    updatePicture(input: $input, condition: $condition) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePicture = /* GraphQL */ `
+  mutation DeletePicture(
+    $input: DeletePictureInput!
+    $condition: ModelPictureConditionInput
+  ) {
+    deletePicture(input: $input, condition: $condition) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
       createdAt
       updatedAt
     }

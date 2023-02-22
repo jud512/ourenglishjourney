@@ -22,7 +22,7 @@
 
 
 
-.home-application, .home-vocabulary, .home-topics{
+.home-application, .home-vocabulary, .home-topics, .home-picture{
     width: 200px;
     padding: 5px 10px;
     cursor: pointer;
@@ -37,6 +37,9 @@
 }
 .home-vocabulary{
     background-color: rgb(76, 35, 115);
+}
+.home-picture{
+    background-color: rgb(169, 99, 99);
 }
 
 .home-topics{

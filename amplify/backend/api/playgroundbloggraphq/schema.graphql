@@ -15,6 +15,7 @@ type Topic @model {
   title: String!
   book: BookType!
   WordTopic: [Word] @hasMany(indexName: "byTopic", fields: ["id"])
+  PictureTopic: [Picture] @hasMany(indexName: "byTopic", fields: ["id"])
 }
 
 type Word @model {
@@ -28,4 +29,11 @@ type Word @model {
   TopicWord: Topic @belongsTo
   topicID: ID! @index(name: "byTopic")
   username: String
+}
+
+type Picture @model {
+  id: ID!
+  url: String!
+  TopicPicture: Topic @belongsTo
+  topicID: ID! @index(name: "byTopic")
 }

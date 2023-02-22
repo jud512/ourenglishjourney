@@ -1,0 +1,50 @@
+.createNewPicture {
+    width: 90vw;
+    margin: auto;
+}
+
+.createPictureTitle {
+    text-align: center;
+    margin: 50px;
+}
+
+.createNewPicture {
+    width: 80%;
+    margin: auto;
+}
+
+.createNewPicture-formItems {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.createNewPicture-formItem{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.createNewPicture-formItem input {
+    width: 100%;
+}
+
+.createNewPicture-label{
+    font-weight: 700;
+}
+
+
+.btnSave {
+    background-color: rgb(95, 36, 95);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+}

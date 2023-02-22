@@ -23,6 +23,16 @@ export const onCreateTopic = /* GraphQL */ `
         }
         nextToken
       }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -45,6 +55,16 @@ export const onUpdateTopic = /* GraphQL */ `
           example
           topicID
           username
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
           createdAt
           updatedAt
         }
@@ -77,6 +97,16 @@ export const onDeleteTopic = /* GraphQL */ `
         }
         nextToken
       }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -97,6 +127,9 @@ export const onCreateWord = /* GraphQL */ `
         title
         book
         WordTopic {
+          nextToken
+        }
+        PictureTopic {
           nextToken
         }
         createdAt
@@ -126,6 +159,9 @@ export const onUpdateWord = /* GraphQL */ `
         WordTopic {
           nextToken
         }
+        PictureTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -153,11 +189,86 @@ export const onDeleteWord = /* GraphQL */ `
         WordTopic {
           nextToken
         }
+        PictureTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       topicID
       username
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreatePicture = /* GraphQL */ `
+  subscription OnCreatePicture($filter: ModelSubscriptionPictureFilterInput) {
+    onCreatePicture(filter: $filter) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePicture = /* GraphQL */ `
+  subscription OnUpdatePicture($filter: ModelSubscriptionPictureFilterInput) {
+    onUpdatePicture(filter: $filter) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePicture = /* GraphQL */ `
+  subscription OnDeletePicture($filter: ModelSubscriptionPictureFilterInput) {
+    onDeletePicture(filter: $filter) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
       createdAt
       updatedAt
     }

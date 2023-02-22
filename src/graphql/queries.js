@@ -23,6 +23,16 @@ export const getTopic = /* GraphQL */ `
         }
         nextToken
       }
+      PictureTopic {
+        items {
+          id
+          url
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -40,6 +50,9 @@ export const listTopics = /* GraphQL */ `
         title
         book
         WordTopic {
+          nextToken
+        }
+        PictureTopic {
           nextToken
         }
         createdAt
@@ -64,6 +77,9 @@ export const getWord = /* GraphQL */ `
         title
         book
         WordTopic {
+          nextToken
+        }
+        PictureTopic {
           nextToken
         }
         createdAt
@@ -107,6 +123,55 @@ export const listWords = /* GraphQL */ `
     }
   }
 `;
+export const getPicture = /* GraphQL */ `
+  query GetPicture($id: ID!) {
+    getPicture(id: $id) {
+      id
+      url
+      TopicPicture {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listPictures = /* GraphQL */ `
+  query ListPictures(
+    $filter: ModelPictureFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPictures(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        url
+        TopicPicture {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
+        topicID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const wordsByTopicID = /* GraphQL */ `
   query WordsByTopicID(
     $topicID: ID!
@@ -139,6 +204,39 @@ export const wordsByTopicID = /* GraphQL */ `
         }
         topicID
         username
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const picturesByTopicID = /* GraphQL */ `
+  query PicturesByTopicID(
+    $topicID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelPictureFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    picturesByTopicID(
+      topicID: $topicID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        url
+        TopicPicture {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
+        topicID
         createdAt
         updatedAt
       }

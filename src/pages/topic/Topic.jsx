@@ -8,7 +8,7 @@ const Topic = () => {
     <div className='topic'>
 
         <h1>Topics</h1>
-      <p>You have an opportunity to choose whether you'd like to create a new topic or only list the.m</p>
+      <p>You have an opportunity to choose whether you'd like to create a new topic or only list them</p>
       <div className="topic-options">
         <Link to="createtopic">
           <div className="topic-create" >

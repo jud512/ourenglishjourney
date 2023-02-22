@@ -31,6 +31,11 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
                     Vocabulary
                 </div>
             </Link>
+            <Link to="/picture" className='home-option-link'>
+                <div className="home-picture">
+                    Pictures
+                </div>
+            </Link>
             {
                 isAdmin && 
                 <Link to="/topic" className='home-option-link'>

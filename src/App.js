@@ -20,6 +20,7 @@ import Vocabulary from "./pages/vocabulary/Vocabulary";
 import Modal from "./components/modal/Modal";
 import EditWord from "./components/editWord/EditWord";
 import Application from "./pages/application/Application";
+import CreateNewPicture from "./components/createNewPicture/CreateNewPicture";
 
 import { AppProvider } from "./context/context";
 import "./App.css";
@@ -30,6 +31,7 @@ import Topic from "./pages/topic/Topic";
 import { EditTopic } from "./components/editTopic/EditTopic";
 import ShowWordExplainMeaning from "./pages/showWordExplainMeaning/ShowWordExplainMeaning";
 import ShowDescriptionExplainMeaning from "./pages/showDescriptionExplainMeaning/ShowDescriptionExplainMeaning";
+import Picture from "./pages/picture/Picture";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -159,9 +161,18 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                     </Modal>
                   }
                 />
+                <Route path="picture" element={<Picture />} />
                 <Route
                   path="application"
                   element={<Application user={user.username} />}
+                />
+                <Route
+                  path="picture/createpicture"
+                  element={
+                    <Modal level={1} shouldShowModal={true} direct="/picture">
+                      <CreateNewPicture />
+                    </Modal>
+                  }
                 />
                 <Route
                   path="application/showwordexplainmeaning"
