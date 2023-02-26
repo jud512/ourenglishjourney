@@ -84,7 +84,7 @@ const ListPictures = () => {
                      <img src={item.url} alt="" />
                 </div>
                 <div className="picture-item-name">
-                    <p>This is the name of the picture</p>
+                    <p>{item.title ? item.title : "This is the name of the picture"}</p>
                     <div className="picture-item-icon-delete" onClick={() => handleDeletePicture(item.id)}>
                         <MdDeleteOutline/>
                     </div>

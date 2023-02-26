@@ -27,6 +27,7 @@ export const onCreateTopic = /* GraphQL */ `
         items {
           id
           url
+          title
           topicID
           createdAt
           updatedAt
@@ -64,6 +65,7 @@ export const onUpdateTopic = /* GraphQL */ `
         items {
           id
           url
+          title
           topicID
           createdAt
           updatedAt
@@ -101,6 +103,7 @@ export const onDeleteTopic = /* GraphQL */ `
         items {
           id
           url
+          title
           topicID
           createdAt
           updatedAt
@@ -207,6 +210,7 @@ export const onCreatePicture = /* GraphQL */ `
     onCreatePicture(filter: $filter) {
       id
       url
+      title
       TopicPicture {
         id
         title
@@ -231,6 +235,7 @@ export const onUpdatePicture = /* GraphQL */ `
     onUpdatePicture(filter: $filter) {
       id
       url
+      title
       TopicPicture {
         id
         title
@@ -255,6 +260,7 @@ export const onDeletePicture = /* GraphQL */ `
     onDeletePicture(filter: $filter) {
       id
       url
+      title
       TopicPicture {
         id
         title

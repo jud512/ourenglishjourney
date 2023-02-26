@@ -12,9 +12,19 @@ const Application = () => {
                 Show Word, Explain Meaning!
               </Link>                
             </div>
+            <div className="application-item" style={{backgroundColor:'rgb(218, 186, 59)'}}>
+              <Link to="/application/showwordexplainmeaningversiontwo" style={{color:"inherit"}}>
+                Show Word, Explain Meaning! (Version 2)
+              </Link>                
+            </div>
             <div className="application-item" style={{backgroundColor:"rgb(104, 136, 93)"}}>
               <Link to="/application/showdescriptionexplainmeaning" style={{color:"inherit"}}>
                 Show Description, Explain Meaning!
+              </Link>                
+            </div>
+            <div className="application-item" style={{backgroundColor:"rgb(97, 64, 131)"}}>
+              <Link to="/application/speakusingpicture" style={{color:"inherit"}}>
+                Speak Using Pictures!
               </Link>                
             </div>
         </div>

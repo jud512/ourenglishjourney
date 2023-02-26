@@ -8,12 +8,15 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .application-item{
     width: 250px;
     height: 150px;
     background-color: rgb(193, 107, 107);
+    
+    
     
     display: flex;
     justify-content: center;
@@ -24,3 +27,4 @@
     text-align: center;
     letter-spacing: 2px;
 }
+

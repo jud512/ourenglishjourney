@@ -1,0 +1,88 @@
+.gameWithWords {}
+
+.gameWithWords-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.gameWithWords-card-container{
+    position: relative;
+    
+}
+
+.gameWithWords-card{
+    width: 100px;
+    height: 60px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    
+}
+
+.gameWithWords-card p{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.gameWithWords-card-back{
+    width: 100px;
+    height: 60px;
+    background-color: rgb(218, 212, 222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    left: 0;
+    color: red;
+    z-index: -1;
+}
+
+.gameWithWords-card-selected{
+    width: 300px;
+    height: 150px;
+    margin: auto;
+    background-color: rgb(139, 187, 139);
+    border-radius: 20px;
+}
+
+.gameWithWords-card-selected{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 40px auto;
+}
+
+.word-name{
+    font-weight: bold;
+}
+
+.hint{
+    padding: 5px;
+    background-color: rgb(234, 244, 162);
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.solution-description{
+    width: 90%;
+    min-height: 60px;
+    background-color: rgb(234, 244, 162);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 5px 10px;
+}
+

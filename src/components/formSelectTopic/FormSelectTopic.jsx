@@ -14,7 +14,7 @@ const FormSelectTopic = ({appName}) => {
 
     const [words, setWords] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [shuffledWords, setShuffledWords] = useState([]);
+
     const [countWords, setCountWords] = useState(0);
     const [isStart, setIsStart] = useState(false);
     const [selectedTopicId, setSelectedTopicId] = useState("");
@@ -30,7 +30,6 @@ const FormSelectTopic = ({appName}) => {
             setWords(words.data.wordsByTopicID.items.map( item => ({...item, 
                 audio: item.sound ? new Audio(`${url}/${item?.sound[0]}/${item?.sound}.mp3`) : "" , url: item.sound ? `${url}/${item?.sound[0]}/${item?.sound}.mp3` : "" })));
             setIsLoading(false);   
-            setShuffledWords(words);
             console.log(words.data.wordsByTopicID.items);
         }
         catch(error){
@@ -70,12 +69,7 @@ const FormSelectTopic = ({appName}) => {
     
     }, [isLoading])
 
-    useEffect(() => {
-            // setShuffledWords(words);
-            // setShuffledWords(shuffledWords.sort(() => Math.random()-0.5)) ;
-        
-        
-    },[words])
+
 
     console.log('TOPICS', topics)
     console.log(selectedTopicId);

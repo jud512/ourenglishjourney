@@ -27,12 +27,15 @@ import "./App.css";
 import ListVocabulary from "./components/listVocabulary/ListVocabulary";
 import LearnVocabulary from "./components/learnVocabulary/LearnVocabulary";
 import GameWithWords from "./components/gameWithWords/GameWithWords";
+import GameWithWordsVersionTwo from "./components/gameWithWordsVersionTwo/GameWithWordsVersionTwo";
 import Topic from "./pages/topic/Topic";
 import { EditTopic } from "./components/editTopic/EditTopic";
 import ShowWordExplainMeaning from "./pages/showWordExplainMeaning/ShowWordExplainMeaning";
 import ShowDescriptionExplainMeaning from "./pages/showDescriptionExplainMeaning/ShowDescriptionExplainMeaning";
+import ShowWordExplainMeaningVersionTwo from "./pages/showWordExplainMeaningVersionTwo/ShowWordExplainMeaningVersionTwo";
 import Picture from "./pages/picture/Picture";
 import ListPictures from "./components/listPictures/ListPictures";
+import SpeakUsingPicture from "./pages/speakUsingPicture/SpeakUsingPicture";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -199,11 +202,23 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                     </Modal>
                   }
                 />
+
+                <Route
+                  path="application/showwordexplainmeaningversiontwo"
+                  element={
+                    <ShowWordExplainMeaningVersionTwo user={user.username} />
+                  }
+                />
+
                 <Route
                   path="application/showdescriptionexplainmeaning"
                   element={
                     <ShowDescriptionExplainMeaning user={user.username} />
                   }
+                />
+                <Route
+                  path="application/speakusingpicture"
+                  element={<SpeakUsingPicture user={user.username} />}
                 />
               </Route>
             </Routes>

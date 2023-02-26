@@ -12,6 +12,7 @@ const CreateNewPicture = () => {
   const [selectedTopic, setSelectedTopic] = useState('');
   const [selectedTopicId, setSelectedTopicId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [imageTitle, setImageTitle] = useState('');
 
   const [messageOK, setMessageOK] = useState(false);
 
@@ -22,6 +23,9 @@ const CreateNewPicture = () => {
   const handleChangeImageUrl = (e) => {
     setImageUrl(e.target.value);
   }
+  const handleChangeImageTitle = (e) => {
+    setImageTitle(e.target.value);
+  }
 
   const createNewPicture = async () => {
     try {
@@ -30,6 +34,7 @@ const CreateNewPicture = () => {
           input:
           {
             url: imageUrl,
+            title: imageTitle,
             topicID: selectedTopicId
           }
         })
@@ -46,6 +51,7 @@ const CreateNewPicture = () => {
       createNewPicture();
       setMessageOK(true);
       setImageUrl('');
+      setImageTitle('');
     }
 
   }
@@ -73,6 +79,10 @@ const CreateNewPicture = () => {
                 ))
                 }
             </select>
+        </div>
+        <div className="createNewPicture-formItem">
+          <label htmlFor="title" className='createNewPicture-label'>Title</label>
+          <input type="text" id='image' value={imageTitle} onChange={handleChangeImageTitle}/>
         </div>
         <div className="createNewPicture-formItem">
           <label htmlFor="image" className='createNewPicture-label'>ImageURL</label>

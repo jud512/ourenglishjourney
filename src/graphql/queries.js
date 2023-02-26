@@ -27,6 +27,7 @@ export const getTopic = /* GraphQL */ `
         items {
           id
           url
+          title
           topicID
           createdAt
           updatedAt
@@ -128,6 +129,7 @@ export const getPicture = /* GraphQL */ `
     getPicture(id: $id) {
       id
       url
+      title
       TopicPicture {
         id
         title
@@ -157,6 +159,7 @@ export const listPictures = /* GraphQL */ `
       items {
         id
         url
+        title
         TopicPicture {
           id
           title
@@ -229,6 +232,7 @@ export const picturesByTopicID = /* GraphQL */ `
       items {
         id
         url
+        title
         TopicPicture {
           id
           title

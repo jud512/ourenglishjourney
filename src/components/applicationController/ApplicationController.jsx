@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import SpeakUsingPicture from '../../pages/speakUsingPicture/SpeakUsingPicture';
 import GameWithDescription from '../gameWithDescription/GameWithDescription';
+import GameWithPicture from '../gameWithPicture/GameWithPicture';
 import GameWithWords from '../gameWithWords/GameWithWords';
+import GameWithWordsVersionTwo from '../gameWithWordsVersionTwo/GameWithWordsVersionTwo';
 import Modal from '../modal/Modal';
 
-const ApplicationController = ({appName, isStart, onRequestClose, number, words}) => {
+const ApplicationController = ({appName, isStart, onRequestClose, number, words, pictures}) => {
     const [app, setApp] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,6 +22,18 @@ const ApplicationController = ({appName, isStart, onRequestClose, number, words}
                 direct: "/application/showdescriptionexplainmeaning",
                 application: <GameWithDescription words={words} number={number}/>
             })
+            setIsLoading(false);
+        }
+        else if(appName === "showwordexplainmeaningversiontwo"){
+            setApp({ 
+                direct: "/application/showwordexplainmeaningversiontwo",
+                application: <GameWithWordsVersionTwo words={words} number={number}/>})
+            setIsLoading(false);
+        }
+        else if(appName === "speakusingpicture"){
+            setApp({ 
+                direct: "/application/speakusingpicture",
+                application: <GameWithPicture pictures={pictures} number={number}/>})
             setIsLoading(false);
         }
     }, [])

@@ -10,6 +10,7 @@ const GameWithWords = ({words, number}) => {
       <div className="gameWithWords-container">
         {
           words.map((item, idx) => 
+          idx < number &&
             <>
               <SingleCardOneSide item={item} type="w" count={idx + 1}/>
             </>)

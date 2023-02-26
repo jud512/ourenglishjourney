@@ -1,6 +1,6 @@
 .singleCardOneSide .item {
-    width: 350px;
-    height: 250px;
+    width:400px;
+    height: 300px;
     border: rgb(57, 10, 57) 1px solid;
     background-color: rgb(202, 227, 205);
     display: flex;
@@ -50,7 +50,7 @@
 
 }
 .showBack{
-
+    border-radius: 10px;
 }
 
 .hideBack{
