@@ -59,6 +59,7 @@ const GameWithWordsVersionTwo = ({words, number}) => {
                         showHint &&
                         <div className='solution-description'>
                             <p>{selectedCard.description}</p>
+                            <p>{selectedCard.example}</p>
                         </div>
                     }
                 </>
