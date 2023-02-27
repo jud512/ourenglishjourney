@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../../context/context'
+import ApplicationController from '../applicationController/ApplicationController';
 
-const FormSelectOnlyTopic = () => {
+const FormSelectOnlyTopic = ({appName}) => {
     const {topics} = useGlobalContext();
     const [selectedTopicId, setSelectedTopicId] = useState('');
+    const [isStart, setIsStart] = useState(false);
 
     const handleTopicChange = (e) => {
         setSelectedTopicId(e.target.value);
     }
 
-    const clickStart = () => {
-
+    const clickStart = (e) => {
+        e.preventDefault();
+        setIsStart(!isStart);
     }
 
     useEffect(() => {
         setSelectedTopicId(topics[0]?.id);
     }, [topics])
+
+    console.log(isStart, appName)
   return (
     <div className='formSelectTopic-container'>
         <form className="formSelectTopic-form">            
@@ -33,8 +38,16 @@ const FormSelectOnlyTopic = () => {
                 <button className='formBtn' onClick={clickStart}>Start</button>
                 
             </div>
-        </form>   
+        </form>  
+        {
+            isStart && 
+            <ApplicationController appName={appName} isStart={isStart} onRequestClose={() => setIsStart(false)} />
+
+        }
+
         </div>
+
+        
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SpeakUsingPicture from '../../pages/speakUsingPicture/SpeakUsingPicture';
+import GameRewriteSentence from '../gameRewriteSentence/GameRewriteSentence';
 import GameWithDescription from '../gameWithDescription/GameWithDescription';
 import GameWithPicture from '../gameWithPicture/GameWithPicture';
 import GameWithWords from '../gameWithWords/GameWithWords';
@@ -34,6 +35,13 @@ const ApplicationController = ({appName, isStart, onRequestClose, number, words,
             setApp({ 
                 direct: "/application/speakusingpicture",
                 application: <GameWithPicture pictures={pictures} number={number}/>})
+            setIsLoading(false);
+        }
+        else if(appName === "rewritesentence"){
+            setApp({
+                direct: "/application/rewritesentence",
+                application: <GameRewriteSentence />
+            });
             setIsLoading(false);
         }
     }, [])
