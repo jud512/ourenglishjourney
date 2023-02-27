@@ -8,6 +8,7 @@ enum BookType {
   BOOK2
   BOOK3
   NO_BOOK
+  ENGLISH_VOCABULARY_IN_USE
 }
 
 type Topic @model {
@@ -16,6 +17,7 @@ type Topic @model {
   book: BookType!
   WordTopic: [Word] @hasMany(indexName: "byTopic", fields: ["id"])
   PictureTopic: [Picture] @hasMany(indexName: "byTopic", fields: ["id"])
+  RewriteTaskTopic: [RewriteTask] @hasMany(indexName: "byTopic", fields: ["id"])
 }
 
 type Word @model {
@@ -36,5 +38,14 @@ type Picture @model {
   url: String!
   title: String
   TopicPicture: Topic @belongsTo
+  topicID: ID! @index(name: "byTopic")
+}
+
+type RewriteTask @model {
+  id: ID!
+  origin: String!
+  incomplete: String!
+  answer: String!
+  TopicRewriteTask: Topic @belongsTo
   topicID: ID! @index(name: "byTopic")
 }

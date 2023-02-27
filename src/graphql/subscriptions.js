@@ -34,6 +34,18 @@ export const onCreateTopic = /* GraphQL */ `
         }
         nextToken
       }
+      RewriteTaskTopic {
+        items {
+          id
+          origin
+          incomplete
+          answer
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -66,6 +78,18 @@ export const onUpdateTopic = /* GraphQL */ `
           id
           url
           title
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      RewriteTaskTopic {
+        items {
+          id
+          origin
+          incomplete
+          answer
           topicID
           createdAt
           updatedAt
@@ -110,6 +134,18 @@ export const onDeleteTopic = /* GraphQL */ `
         }
         nextToken
       }
+      RewriteTaskTopic {
+        items {
+          id
+          origin
+          incomplete
+          answer
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -133,6 +169,9 @@ export const onCreateWord = /* GraphQL */ `
           nextToken
         }
         PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
           nextToken
         }
         createdAt
@@ -165,6 +204,9 @@ export const onUpdateWord = /* GraphQL */ `
         PictureTopic {
           nextToken
         }
+        RewriteTaskTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -195,6 +237,9 @@ export const onDeleteWord = /* GraphQL */ `
         PictureTopic {
           nextToken
         }
+        RewriteTaskTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -219,6 +264,9 @@ export const onCreatePicture = /* GraphQL */ `
           nextToken
         }
         PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
           nextToken
         }
         createdAt
@@ -246,6 +294,9 @@ export const onUpdatePicture = /* GraphQL */ `
         PictureTopic {
           nextToken
         }
+        RewriteTaskTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -269,6 +320,102 @@ export const onDeletePicture = /* GraphQL */ `
           nextToken
         }
         PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateRewriteTask = /* GraphQL */ `
+  subscription OnCreateRewriteTask(
+    $filter: ModelSubscriptionRewriteTaskFilterInput
+  ) {
+    onCreateRewriteTask(filter: $filter) {
+      id
+      origin
+      incomplete
+      answer
+      TopicRewriteTask {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateRewriteTask = /* GraphQL */ `
+  subscription OnUpdateRewriteTask(
+    $filter: ModelSubscriptionRewriteTaskFilterInput
+  ) {
+    onUpdateRewriteTask(filter: $filter) {
+      id
+      origin
+      incomplete
+      answer
+      TopicRewriteTask {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteRewriteTask = /* GraphQL */ `
+  subscription OnDeleteRewriteTask(
+    $filter: ModelSubscriptionRewriteTaskFilterInput
+  ) {
+    onDeleteRewriteTask(filter: $filter) {
+      id
+      origin
+      incomplete
+      answer
+      TopicRewriteTask {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
           nextToken
         }
         createdAt

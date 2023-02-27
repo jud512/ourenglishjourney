@@ -34,6 +34,18 @@ export const getTopic = /* GraphQL */ `
         }
         nextToken
       }
+      RewriteTaskTopic {
+        items {
+          id
+          origin
+          incomplete
+          answer
+          topicID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -54,6 +66,9 @@ export const listTopics = /* GraphQL */ `
           nextToken
         }
         PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
           nextToken
         }
         createdAt
@@ -81,6 +96,9 @@ export const getWord = /* GraphQL */ `
           nextToken
         }
         PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
           nextToken
         }
         createdAt
@@ -140,6 +158,9 @@ export const getPicture = /* GraphQL */ `
         PictureTopic {
           nextToken
         }
+        RewriteTaskTopic {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -161,6 +182,62 @@ export const listPictures = /* GraphQL */ `
         url
         title
         TopicPicture {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
+        topicID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getRewriteTask = /* GraphQL */ `
+  query GetRewriteTask($id: ID!) {
+    getRewriteTask(id: $id) {
+      id
+      origin
+      incomplete
+      answer
+      TopicRewriteTask {
+        id
+        title
+        book
+        WordTopic {
+          nextToken
+        }
+        PictureTopic {
+          nextToken
+        }
+        RewriteTaskTopic {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      topicID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listRewriteTasks = /* GraphQL */ `
+  query ListRewriteTasks(
+    $filter: ModelRewriteTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRewriteTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        origin
+        incomplete
+        answer
+        TopicRewriteTask {
           id
           title
           book
@@ -234,6 +311,41 @@ export const picturesByTopicID = /* GraphQL */ `
         url
         title
         TopicPicture {
+          id
+          title
+          book
+          createdAt
+          updatedAt
+        }
+        topicID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const rewriteTasksByTopicID = /* GraphQL */ `
+  query RewriteTasksByTopicID(
+    $topicID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelRewriteTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    rewriteTasksByTopicID(
+      topicID: $topicID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        origin
+        incomplete
+        answer
+        TopicRewriteTask {
           id
           title
           book
