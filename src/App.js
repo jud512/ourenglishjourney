@@ -36,6 +36,7 @@ import ShowWordExplainMeaningVersionTwo from "./pages/showWordExplainMeaningVers
 import Picture from "./pages/picture/Picture";
 import ListPictures from "./components/listPictures/ListPictures";
 import SpeakUsingPicture from "./pages/speakUsingPicture/SpeakUsingPicture";
+import RewriteSentence from "./pages/rewriteSentence/RewriteSentence";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -219,6 +220,10 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                 <Route
                   path="application/speakusingpicture"
                   element={<SpeakUsingPicture user={user.username} />}
+                />
+                <Route
+                  path="application/rewritesentence"
+                  element={<RewriteSentence user={user.username} />}
                 />
               </Route>
             </Routes>

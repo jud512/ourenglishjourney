@@ -27,6 +27,11 @@ const Application = () => {
                 Speak Using Pictures!
               </Link>                
             </div>
+            <div className="application-item" style={{backgroundColor:"rgb(20, 100, 60)"}}>
+              <Link to="/application/rewritesentence" style={{color:"inherit"}}>
+                Rewrite Sentences!
+              </Link>                
+            </div>
         </div>
     </div>
   )
