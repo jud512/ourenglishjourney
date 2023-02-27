@@ -70,7 +70,7 @@ const LearnVocabulary = () => {
                 <h1>Let's Learn Words</h1>
                 <p>Here's the time to learn new words using cards!</p>
                 <form className='learnVocabulary-form'>
-                    <label htmlFor="">Please, select a topic!</label>
+                    <label style={{marginRight:'10px'}}>Please, select a topic!</label>
                     <select id="topic" name="topic" onChange={handleChangeTopic}>
                         {
                             topics?.map( item => (
