@@ -38,6 +38,7 @@ import ListPictures from "./components/listPictures/ListPictures";
 import SpeakUsingPicture from "./pages/speakUsingPicture/SpeakUsingPicture";
 import RewriteSentence from "./pages/rewriteSentence/RewriteSentence";
 import TaskEditor from "./pages/taskEditor/TaskEditor";
+import EditRewriteSentence from "./components/editRewriteSentence/EditRewriteSentence";
 Amplify.configure(awsconfig);
 
 const createTopicData = async () => {
@@ -227,6 +228,18 @@ function App(isPassedToWithAuthenticator, signOut, user) {
                   element={<RewriteSentence user={user.username} />}
                 />
                 <Route path="taskeditor" element={<TaskEditor />} />
+                <Route
+                  path="taskeditor/editrewritesentence"
+                  element={
+                    <Modal
+                      level={1}
+                      shouldShowModal={true}
+                      direct="/taskeditor"
+                    >
+                      <EditRewriteSentence />
+                    </Modal>
+                  }
+                />
               </Route>
             </Routes>
           </BrowserRouter>

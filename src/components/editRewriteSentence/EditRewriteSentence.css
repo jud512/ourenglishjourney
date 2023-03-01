@@ -1,0 +1,68 @@
+.editrewritesentence{
+    text-align: center;
+}
+
+.editrewritesentence-addnew-container{
+    width: 90%;
+    margin: 30px auto;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: rgb(232, 201, 144);
+    text-align: left;
+    
+}
+
+.editrewritesentence-form{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editrewritesentence-item .label{
+    margin-right: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.editrewritesentence-item input{
+    width: 100%;
+}
+
+.btnList{
+    background-color: rgb(52, 122, 86);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        width: 300px;
+        display: block;
+        margin: 20px auto;
+}
+
+.rewritesentence-table{
+    width: 100%;
+    border: 1px gray solid;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.rewritesentence-table th{
+    text-align: center;
+    border: 1px gray solid;
+    padding: 5px;
+    background-color: rgb(42, 125, 101);
+    color: white;
+    letter-spacing: 1px;
+}
+
+.rewritesentence-table td{
+    width: 25%;
+    border: 1px gray solid;
+    padding: 5px;
+}
