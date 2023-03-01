@@ -44,6 +44,14 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
                     </div>
                 </Link>
             }
+            {
+                isAdmin && 
+                <Link to="/taskeditor" className='home-option-link'>
+                    <div className="home-taskeditor">
+                        Task Editor
+                    </div>
+                </Link>
+            }
             
         </div>
     </div>

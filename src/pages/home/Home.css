@@ -2,6 +2,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 30px;
 }
 
@@ -17,12 +18,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 
 
-.home-application, .home-vocabulary, .home-topics, .home-picture{
+.home-application, .home-vocabulary, .home-topics, .home-picture, .home-taskeditor{
     width: 200px;
     padding: 5px 10px;
     cursor: pointer;
@@ -44,4 +46,7 @@
 
 .home-topics{
     background-color: rgb(64, 100, 64);
+}
+.home-taskeditor{
+    background-color: rgb(89, 144, 159);
 }
