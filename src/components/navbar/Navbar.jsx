@@ -57,11 +57,14 @@ const Navbar = ({isPassedToWithAuthenticator, signOut, user}) => {
   });
   
   return (
-    <nav className="navbar">
+    <nav className="navbar slide-in-top">
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <p className="logo">Our English Journey</p> 
+            <div className="navbar-logo-container">
+              <img src="ourenglishjourney3-wb-icon.png" alt="" />
+            </div>
+            
           </Link>
           <button
             type="button"

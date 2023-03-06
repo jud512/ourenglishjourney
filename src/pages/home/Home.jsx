@@ -16,7 +16,10 @@ const Home = ({isPassedToWithAuthenticator, user, userAll, signOut}) => {
     // console.log(userAll);
     console.log('ISADMIN', isAdmin)
   return (
-    <div className="home">
+    <div className="home slide-in-blurred-bottom">
+        <div className='home-logoimg-container '>
+            <img src="./ourenglishjourney3-wb.png" alt="Logo Image" />
+        </div>
         {<div className='home-greeting'>Welcome on my WebSite, dear <span>{user}</span>!</div>}
         <p>We're going to have so much fun together during Our English Journey.</p>
         <p>Please choose from the options below!</p>
