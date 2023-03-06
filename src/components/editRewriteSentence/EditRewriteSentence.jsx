@@ -49,6 +49,7 @@ const EditRewriteSentence = () => {
         e.preventDefault();
         if(task && selectedTopicId){
             addNewSentence();
+            setTask({origin: '', incomplete:'', answer:''});
         }
     }
 
@@ -77,7 +78,8 @@ const EditRewriteSentence = () => {
     //to render
     useEffect(() => {
         setSelectedTopicId(topics[0]?.id)
-        setSelectedTopicIdList(topics[0]?.id)
+        selectedTopicId ? setSelectedTopicIdList(selectedTopicId) : setSelectedTopicIdList(topics[0]?.id); 
+        
     }, [topics])
     console.log(tasks)
   return (

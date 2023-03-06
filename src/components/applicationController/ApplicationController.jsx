@@ -7,7 +7,7 @@ import GameWithWords from '../gameWithWords/GameWithWords';
 import GameWithWordsVersionTwo from '../gameWithWordsVersionTwo/GameWithWordsVersionTwo';
 import Modal from '../modal/Modal';
 
-const ApplicationController = ({appName, isStart, onRequestClose, number, words, pictures}) => {
+const ApplicationController = ({appName, isStart, onRequestClose, number, words, pictures, selectedTopicId}) => {
     const [app, setApp] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -40,7 +40,7 @@ const ApplicationController = ({appName, isStart, onRequestClose, number, words,
         else if(appName === "rewritesentence"){
             setApp({
                 direct: "/application/rewritesentence",
-                application: <GameRewriteSentence />
+                application: <GameRewriteSentence selectedTopicId={selectedTopicId}/>
             });
             setIsLoading(false);
         }

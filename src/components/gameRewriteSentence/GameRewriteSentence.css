@@ -1,0 +1,84 @@
+.gameRewriteSentence{
+    width: 90%;
+    height: 80vh;
+    background-color: rgb(222, 183, 109);
+    margin: auto;
+    padding-top: 50px;
+}
+
+.gameRewriteSentence-img-container{
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gameRewriteSentence-img-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.gameRewriteSentence-instruction{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2rem;
+}
+
+.gameRewriteSentence-container{
+    display: flex;
+    
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.gameRewriteSentence-task-container{
+    background-color: white;
+    min-height: 50px;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    gap: 30px;
+}
+
+.gameRewriteSentence-hint{
+    padding: 20px;
+}
+
+.gameRewriteSentence-hint span{
+    padding: 5px;
+    background-color: rgb(205, 200, 50);
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgb(45, 44, 44);
+    cursor: pointer;
+}
+
+.gameRewriteSentence-hint-answer{
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.gameRewriteSentence-icon{
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: red;
+    
+}
+
+@media screen and (max-height:700px) {
+    .gameRewriteSentence-img-container{
+        display: none;
+    }
+}
+
+
+

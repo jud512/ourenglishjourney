@@ -41,7 +41,7 @@ const FormSelectOnlyTopic = ({appName}) => {
         </form>  
         {
             isStart && 
-            <ApplicationController appName={appName} isStart={isStart} onRequestClose={() => setIsStart(false)} />
+            <ApplicationController appName={appName} isStart={isStart} onRequestClose={() => setIsStart(false)} selectedTopicId={selectedTopicId}/>
 
         }
 
