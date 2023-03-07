@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Header from '../../components/header/Header'
 import './Application.css'
 
 const Application = () => {
   return (
     <div className='application'>
-        <h1>Applications</h1>
+      
+      <Header title="Applications" img1='https://images.pexels.com/photos/4353618/pexels-photo-4353618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' img2='https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
         <div className="application-items">
             <div className="application-item">
               <Link to="/application/showwordexplainmeaning" style={{color:"inherit"}}>
