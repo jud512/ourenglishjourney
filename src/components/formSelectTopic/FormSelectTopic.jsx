@@ -76,9 +76,9 @@ const FormSelectTopic = ({appName}) => {
     console.log('WORDS', words);
     // console.log('SHUFFLED WORDS', shuffledWords)
   return (
-    <div className='formSelectTopic-container'>
+    <div className='formSelectTopic-container-main'>
         <form className="formSelectTopic-form">
-            <div className="formSelectTopic-item">
+            <div className="formSelectTopic-item-main">
                 <label htmlFor="formSelectNumber-number">How many words would you like to practice?</label>
                 <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countWords} style={{width:"50px", textAlign:"center", marginLeft:"10px"}}/>
             </div>
@@ -92,8 +92,8 @@ const FormSelectTopic = ({appName}) => {
                     }
                 </select>
             </div>
-            <div className="formWordNumberItem" style={{alignSelf:'flex-end'}}>
-                <button className='formBtn' onClick={clickStart}>Start</button>
+            <div className="formWordNumberItem" >
+                <button className='formBtn-main' onClick={clickStart}>Start</button>
                 
             </div>
         </form>   
