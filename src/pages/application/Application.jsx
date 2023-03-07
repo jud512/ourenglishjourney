@@ -6,7 +6,7 @@ import './Application.css'
 
 const Application = () => {
   return (
-    <div className='application'>
+    <div className='application slide-in-blurred-bottom'>
       
       <Header title="Applications" img1='https://images.pexels.com/photos/4353618/pexels-photo-4353618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' img2='https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'/>
 
