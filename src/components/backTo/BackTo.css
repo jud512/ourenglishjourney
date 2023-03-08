@@ -1,0 +1,10 @@
+.back-to-somewhere {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    gap: 10px;
+    color: rgb(75, 75, 75);
+    font-weight: bold;
+    letter-spacing: 1px;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import BackTo from '../../components/backTo/BackTo'
 import FormSelectTopicPicture from '../../components/formSelectTopicPicture/FormSelectTopicPicture'
 import './SpeakUsingPicture.css'
 
@@ -8,6 +9,8 @@ const SpeakUsingPicture = () => {
         <h1>Speak Using Pictures!</h1>
 
         <FormSelectTopicPicture appName="speakusingpicture"/>
+
+        <BackTo url='/application'/>
     </div>
   )
 }

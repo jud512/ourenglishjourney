@@ -4,6 +4,7 @@ import Header from '../../components/header/Header'
 import './ShowWordExplainMeaningVersionTwo.css'
 import { Link } from 'react-router-dom'
 import {MdKeyboardArrowLeft} from 'react-icons/md'
+import BackTo from '../../components/backTo/BackTo'
 
 const ShowWordExplainMeaningVersionTwo = () => {
   return (
@@ -12,19 +13,19 @@ const ShowWordExplainMeaningVersionTwo = () => {
       
         <FormSelectTopic appName="showwordexplainmeaningversiontwo"/>
 
-        <div style={{width:'fit-content'}}>
+        {/* <div style={{width:'fit-content'}}>
           <Link to="/application" >
-          <div className='back-to-application'>
-            
+          <div className='back-to-application'>            
               <MdKeyboardArrowLeft size={30}/>
               <p> Back to</p>
-              <div className="img-container-to-application">
-                
+              <div className="img-container-to-application">                
                   <img src="../options/applications-wb.png" alt="app" />
               </div>             
               </div>
           </Link>
-        </div>
+        </div> */}
+        
+        <BackTo url='/application'/>
         
         
     </div>
