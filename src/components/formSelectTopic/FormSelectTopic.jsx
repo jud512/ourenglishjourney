@@ -15,7 +15,7 @@ const FormSelectTopic = ({appName}) => {
     const [words, setWords] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [countWords, setCountWords] = useState(0);
+    const [countWords, setCountWords] = useState(1);
     const [isStart, setIsStart] = useState(false);
     const [selectedTopicId, setSelectedTopicId] = useState("");
 
@@ -77,10 +77,28 @@ const FormSelectTopic = ({appName}) => {
     // console.log('SHUFFLED WORDS', shuffledWords)
   return (
     <div className='formSelectTopic-container-main'>
+        <div style={{display:'flex'}}>
+             <div className='formSelectTopic-img-container rotate-center'>
+                <img src="https://images.pexels.com/photos/1592119/pexels-photo-1592119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
+             <div className='formSelectTopic-img-container rotate-center'>
+                <img src="https://images.pexels.com/photos/1592119/pexels-photo-1592119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
+             <div className='formSelectTopic-img-container rotate-center'>
+                <img src="https://images.pexels.com/photos/1592119/pexels-photo-1592119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
+             <div className='formSelectTopic-img-container rotate-center'>
+                <img src="https://images.pexels.com/photos/1592119/pexels-photo-1592119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
+             <div className='formSelectTopic-img-container rotate-center'>
+                <img src="https://images.pexels.com/photos/1592119/pexels-photo-1592119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
+        </div>
+       
         <form className="formSelectTopic-form">
             <div className="formSelectTopic-item-main">
                 <label htmlFor="formSelectNumber-number">How many words would you like to practice?</label>
-                <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countWords} style={{width:"50px", textAlign:"center", marginLeft:"10px"}}/>
+                <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countWords} style={{width:"80px", textAlign:"center", marginLeft:"10px"}} min='1'/>
             </div>
             <div className="formSelectNumber-item">
                 <label htmlFor="topics">Please, choose a topic!</label>

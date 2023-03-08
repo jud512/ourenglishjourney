@@ -4,17 +4,20 @@ import './GameWithWordsVersionTwo.css'
 const GameWithWordsVersionTwo = ({words, number}) => {
     const [wordsApp, setWordsApp] = useState([]);
     const [selectedCard, setSelectedCard] = useState();
-    const [showHint, sestShowHint] = useState(false);
+    const [showHint, setShowHint] = useState(false);
+    const [showHintMessage, setShowHintMessage] = useState(false);
     const handleClickOnCard = (id) => {
         const newSelectedCard = wordsApp.filter(item => item.id === id);
         setSelectedCard(newSelectedCard[0]);
 
         const newWords = wordsApp.map((item) => item.id === id ? {...item, selected: true} : item)
         setWordsApp(newWords);
+        setShowHintMessage(false);
     }
 
     const handleShowHint = () => {
-        sestShowHint(!showHint)
+        setShowHint(true)
+        setShowHintMessage(!showHintMessage);
     }
 
     useState(() => {
@@ -24,11 +27,13 @@ const GameWithWordsVersionTwo = ({words, number}) => {
     console.log('WORDS-SELECTED', wordsApp)
   return (
     <div className='gameWithWords'>
+        <p className='gameWithWords-intruction'>Please, select a number!</p>
         <div className="gameWithWords-container">
+            
             {
                 wordsApp.map((item, idx) =>
                 idx < number &&
-                <div className='gameWithWords-card-container' key={item.id}>
+                <div className='gameWithWords-card-container  roll-in-left' key={item.id}>
                     {
                         !item.selected ?
                         <div className="gameWithWords-card"  onClick={() => handleClickOnCard(item.id)}>
@@ -48,23 +53,27 @@ const GameWithWordsVersionTwo = ({words, number}) => {
 
         {
                 selectedCard &&
-                <>
-                    <div className="gameWithWords-card-selected">
-                        <p className='word-name fade-in-fwd'>{selectedCard.name}</p>
+                <div>
+                    <div className="gameWithWords-card-selected slide-in-blurred-top">
+                        <p className='word-name '>{selectedCard.name}</p>
                     </div>
                     <div>
-                        <p>Do you want to check your answer? Click there: <span className='hint' onClick={handleShowHint}>HINT</span></p>
+                        <p>Do you want to check your answer? Click there: <span className='hint' onClick={handleShowHint}>{showHintMessage ? 'HIDE':'HINT'}</span></p>
                     </div>
                     {
                         showHint &&
-                        <div className='solution-description'>
+                        <div className={showHintMessage ? 'solution-description scale-in-center ' : 'solution-description scale-in-center scale-out-center'}>
                             <p>{selectedCard.description}</p>
                             <p>{selectedCard.example}</p>
                         </div>
-                    }
-                </>
+                    } 
+                </div>
                 
             }
+
+            <div className='gamewithwordsversiontwo-img-container'>
+                <img src="https://images.pexels.com/photos/1181715/pexels-photo-1181715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            </div>
     </div>
   )
 }
