@@ -9,6 +9,7 @@ import { computeHeadingLevel } from '@testing-library/react';
 import axios from 'axios';
 import ModalTop from '../modal/ModalTop';
 import Message from '../message/Message';
+import TitleForm from '../titleForm/TitleForm';
 const CreateNewVocabulary = () => {
     const {topics, user} = useGlobalContext();
     const [book, setBook] = useState('BOOK1');
@@ -153,7 +154,8 @@ const CreateNewVocabulary = () => {
     // console.log('FORMDATAWORD', formDataWord);
     return (
         <div className='createNewVocab'>
-            <h1 className='createVocTitle'>Add New Word To The Vocabulary</h1>
+            <TitleForm title="Add New Word To The Vocabulary" img="https://images.pexels.com/photos/132474/pexels-photo-132474.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+           
             <div className="createNewVoc">
                     <form  className='formItems'>
                         <div className="formItem">
