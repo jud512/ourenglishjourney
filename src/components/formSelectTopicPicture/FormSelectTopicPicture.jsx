@@ -57,7 +57,7 @@ const FormSelectTopicPicture = ({appName}) => {
   return (
     <div className='formSelectTopic-container'>
         <form className="formSelectTopic-form">
-            <div className="formSelectTopic-item">
+            <div className="formSelectTopic-item-main">
                 <label htmlFor="formSelectNumber-number">How many pictures would you like to get?</label>
                 <input type="number" id="formSelectNumber-number" onChange={handleChangeNumber} value={countPicture} style={{width:"50px", textAlign:"center", marginLeft:"10px"}}/>
             </div>
@@ -71,8 +71,8 @@ const FormSelectTopicPicture = ({appName}) => {
                     }
                 </select>
             </div>
-            <div className="formWordNumberItem" style={{alignSelf:'flex-end'}}>
-                <button className='formBtn' onClick={clickStart}>Start</button>
+            <div className="formWordNumberItem" >
+                <button className='formBtn-main' onClick={clickStart}>Start</button>
                 
             </div>
         </form>   
