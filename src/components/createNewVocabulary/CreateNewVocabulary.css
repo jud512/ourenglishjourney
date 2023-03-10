@@ -24,10 +24,106 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
+
+    position: relative;
+    display: flex;
+    width: 550px;
+    height: 3em;
+    line-height: 3;
+    background: #A0B8C6;
+    overflow: hidden;
+    border-radius: .25em;
+    padding-left: 5px;
+    border: none;
+    letter-spacing: 1px;
+    
+}
+
+.formItem-select::after{
+    content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 1em;
+        background: #A0B8C6;
+        pointer-events: none;
+        cursor: pointer;
+    
+        transition: .25s all ease;
+}
+
+.formItem-select {
+    position: relative;
+    display: flex;
+    width: 550px;
+    height: 3em;
+    line-height: 3;
+    background: #A0B8C6;
+    overflow: hidden;
+    border-radius: .25em;
+    padding-left: 5px;
+    border: none;
+}
+
+.formItem-select {
+    letter-spacing: 1px;
+}
+
+.formItem-select label{
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 160px;
+}
+
+
+
+.formItem-select select {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.formItem-select select:focus {
+    outline: none;
+}
+.formItem-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #A0B8C6;
+    pointer-events: none;
+    cursor: pointer;
+
+    transition: .25s all ease;
+
+}
+
+.formItem-select:hover::after {
+    color: #3d708e;
+    cursor: pointer;
+}
+
+.formItem label, .formItem-label{
+    width:160px;
+    font-weight: bold;
+}
+
+.formItem-value{
+    width: 100%;
+    text-align: center;
 }
 
 .formItem input {
-    width: 100%;
+    width: 100%;    
+    border: solid 1px lightgray;
+    padding-left: 8px;
+}
+
+.formItem textarea{
+    height: 200px;
+    border: none;
 }
 
 
@@ -41,4 +137,25 @@
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 2px;
+    
 }
+
+.createNewVocabulary-checkDatabase, .createNewVocabulary-btnSave{
+    width: 140px;
+    height: 70px;
+    padding: 10px;
+    background-color: rgb(79, 133, 79);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.createNewVocabulary-btnSave{
+    background-color: rgb(73, 41, 73);
+}
+

@@ -158,7 +158,7 @@ const CreateNewVocabulary = () => {
            
             <div className="createNewVoc">
                     <form  className='formItems'>
-                        <div className="formItem">
+                        <div className="formItem-select ">
                             <label htmlFor="topic">Topic</label>
                             <select id="topic" name="topic" onChange={handleChangeTopic}>
                                 {
@@ -171,29 +171,19 @@ const CreateNewVocabulary = () => {
                         </div>
                         {/* <p>TopicID: {selectedTopicId}</p> */}
                         <div className="formItem">
-                            <span>Book</span>
-                            <span>{book}</span>
+                            <span className='formItem-label'>Book</span>
+                            <span className='formItem-value'>{book}</span>
                         </div>
                             <div className="formItem">
                                 <label htmlFor="newword">Word</label>
                                 <input type="text" id='newword' name='wordName' value={word} onChange={handleChangeWord}/>
                             </div>
-                            <button style={{backgroundColor:'green', color:'white', border:'none', height:'30px'}} onClick={handleCheckDictionary}>Check the database</button>
+                            <button className='createNewVocabulary-checkDatabase'  onClick={handleCheckDictionary}>Check the database</button>
 
                             
                             {
                                 error && <p>{error}</p>
                             }
-                            {/* { 
-                            error ? <p>{error}</p> : 
-                            <div className="fetchData" style={{backgroundColor:"gray", color: 'white'}}>
-                                <p>{dataWord.description}</p>
-                                <p>{dataWord.pronunciation}</p>
-                                <p>{dataWord.speech}</p>
-                                <p>{dataWord.sound}</p>
-                                
-                            </div>
-                            } */}
 
 
                             <div className="formItem">
@@ -206,19 +196,23 @@ const CreateNewVocabulary = () => {
                             </div>
                             <div className="formItem">
                                 <label htmlFor="desc">Description</label>
-                                <textarea id='desc' rows="5" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
+                                <textarea id='desc' rows="10" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
                             </div>
                             
                             <div className="formItem">
                                 <label htmlFor="example">Example</label>
                                 <input type="text" id='example' name='example' value={formDataWord.example} onChange={handleWordFormChange}/>
                             </div>
-                            <div className="formItem">
+                            {/* <div className="formItem">
                                 <label htmlFor="sound">Sound</label>
                                 <input type="text" id='sound' name='sound' value={formDataWord.sound} onChange={handleWordFormChange}/>
+                            </div> */}
+                            <div className="formItem">
+                                <span className='formItem-label'>Sound</span>
+                                <span className='formItem-value'>{formDataWord.sound}</span>
                             </div>
                             
-                    <button className='btnSave' onClick={handleClickSave}>Save it into the database</button>
+                    <button className='createNewVocabulary-btnSave' onClick={handleClickSave}>Save it into the database</button>
                 </form>
             </div>
 
