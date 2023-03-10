@@ -24,7 +24,7 @@ const GameWithWordsVersionTwo = ({words, number}) => {
         const newWords = words.map((item) => ({...item, selected: false}))
         setWordsApp(newWords)
     }, [])
-    console.log('WORDS-SELECTED', wordsApp)
+    // console.log('WORDS-SELECTED', wordsApp)
   return (
     <div className='gameWithWords'>
         <p className='gameWithWords-intruction'>Please, select a number!</p>

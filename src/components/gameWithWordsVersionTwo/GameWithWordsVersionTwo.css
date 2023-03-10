@@ -45,6 +45,7 @@
     /* border-radius: 10px; */
     border-radius: 50%;
     
+    
 }
 
 .gameWithWords-card p{
@@ -73,7 +74,7 @@
     margin: auto;
     background-color: #A0B8C6;
     border-radius: 20px;
-    
+    padding: 10px;
 }
 
 .gameWithWords-card-selected{
