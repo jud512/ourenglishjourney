@@ -34,8 +34,8 @@ const FormSelectOnlyTopic = ({appName}) => {
                     }
                 </select>
             </div>
-            <div className="formWordNumberItem" style={{alignSelf:'flex-end'}}>
-                <button className='formBtn' onClick={clickStart}>Start</button>
+            <div className="formWordNumberItem">
+                <button className='formBtn-main' onClick={clickStart}>Start</button>
                 
             </div>
         </form>  
