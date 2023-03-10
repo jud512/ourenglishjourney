@@ -5,6 +5,7 @@ import LearnVocabulary from '../../components/learnVocabulary/LearnVocabulary';
 import ListVocabulary from '../../components/listVocabulary/ListVocabulary';
 import Modal from '../../components/modal/Modal';
 import './Vocabulary.css'
+import Header from '../../components/header/Header'
 
 const Vocabulary = () => {
     const [shouldShowCreateVocab, setShouldShowCreateVocab] = useState(false);
@@ -13,10 +14,11 @@ const Vocabulary = () => {
 
   return (
     <div className='vocabulary'>
-      <h1>Vocabulary</h1>
-      <p>You have an opportunity to choose whether you'd like to create new vocabulary or only learn words.</p>
+      <Header title="Vocabulary" img1="https://images.pexels.com/photos/4567484/pexels-photo-4567484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" img2="https://images.pexels.com/photos/3782235/pexels-photo-3782235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+      
+      <p className='vocabulary-instruction'>You have an opportunity to choose whether you'd like to create new vocabulary or only learn words.</p>
       <div className="vocabulary-options">
-        <Link to="createvocabulary">
+        <Link to="createvocabulary ">
           <div className="vocabulary-create" >
             <span>Create New Vocabulary</span>
         </div>

@@ -1,6 +1,19 @@
 .vocabulary{
     text-align: center;
+    padding: 20px;
     
+}
+
+.vocabulary-instruction{
+    background-color: #143E4F;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    margin: 100px auto;
+    letter-spacing: 1px;
+
 }
 
 .vocabulary h1{
@@ -14,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 100px;
 }
 
 .vocabulary-create span,
@@ -30,17 +43,19 @@
 .vocabulary-learn,
 .vocabulary-list{
     width: 200px;
-    height: 80px;
+    height: 200px;
     padding: 5px 10px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 50%;
     letter-spacing: 2px;
     color: white;
     font-weight: 500;
     display: flex;
     align-content: center;
     justify-content: center;
+    
     flex-wrap: wrap;
+    border: 1px solid;
 }
 
 
@@ -48,15 +63,45 @@
 .vocabulary-create{
     background-color: rgb(31, 121, 136);
 }
+.vocabulary-create:hover {
+    color: rgb(31, 121, 136);
+    font-weight: bold;
+    background-color: white;
+    -webkit-animation: pulsate-bck 1s ease-in-out both;
+        animation: pulsate-bck 1s ease-in-out both;
+    
+}
 
 .vocabulary-edit{
     background-color: rgb(118, 82, 35);
+}
+.vocabulary-edit:hover{
+    color: rgb(118, 82, 35);;
+    font-weight: bold;
+    background-color: white;
+    -webkit-animation: pulsate-bck 1s ease-in-out both;
+        animation: pulsate-bck 1s ease-in-out both;
 }
 
 .vocabulary-learn{
     background-color: rgb(96, 30, 30);
 }
+.vocabulary-learn:hover{
+    color: rgb(96, 30, 30);
+    font-weight: bold;
+    background-color: white;
+    -webkit-animation: pulsate-bck 1s ease-in-out both;
+        animation: pulsate-bck 1s ease-in-out both;
+}
 
 .vocabulary-list{
     background-color: rgb(58, 46, 85);
+}
+
+.vocabulary-list:hover{
+    color: rgb(58, 46, 85);
+    font-weight: bold;
+    background-color: white;
+    -webkit-animation: pulsate-bck 1s ease-in-out both;
+        animation: pulsate-bck 1s ease-in-out both;
 }
