@@ -195,8 +195,12 @@ const CreateNewVocabulary = () => {
                                 <input type="text" id='pron' name='pronunciation' value={formDataWord.pronunciation} onChange={handleWordFormChange}/>
                             </div>
                             <div className="formItem">
+                    
                                 <label htmlFor="desc">Description</label>
-                                <textarea id='desc' rows="10" cols="30" name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
+                                
+                                    <textarea id='desc'name='description' value={formDataWord.description} onChange={handleWordFormChange}/>
+                                
+                                
                             </div>
                             
                             <div className="formItem">
