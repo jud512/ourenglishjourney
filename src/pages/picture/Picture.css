@@ -8,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 100px;
+    
 }
 
 .picture-create span,

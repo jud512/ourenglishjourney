@@ -12,10 +12,10 @@ const Picture = () => {
       <p>You have an opportunity to choose whether you'd like to add a new image to a topic or only list them.</p>
       <div className="picture-options">
         <Link to="createpicture">
-          <CircleOption title="Add a New Image" background='green'/>
+          <CircleOption title="Add a New Image" background='rgb(81, 135, 81)'/>
         </Link>
         <Link to="listpicture">
-          <CircleOption title="List Images" background='purple' />
+          <CircleOption title="List Images" background='rgb(131, 69, 131)' />
         </Link>
                 
 
