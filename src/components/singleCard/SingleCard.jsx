@@ -18,7 +18,11 @@ const SingleCard = ({item,  handleItemSelect, selectWords, currentIdx}) => {
 
                         <p className='word'>{ item.name }</p>                      
                         <p >{item.speech}</p>
-                        <p >/{item.pronunciation}/</p>
+                        {
+                            item.pronunciation  &&
+                            <p >/{item.pronunciation}/</p>
+                        }
+                        
                         {
                             item.sound  &&
                                 <p className='soundIcon'><AiFillSound onClick={() => {

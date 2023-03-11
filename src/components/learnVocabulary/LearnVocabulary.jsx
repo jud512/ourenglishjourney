@@ -6,6 +6,7 @@ import {useGlobalContext} from '../../context/context'
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 import { GiReturnArrow } from 'react-icons/gi'
 import SingleCard from '../singleCard/SingleCard';
+import TitleForm from '../titleForm/TitleForm'
 
 
 
@@ -66,9 +67,9 @@ const LearnVocabulary = () => {
     // console.log('LEARN WORDS', words);
     return (
         <div className="learnVocabulary">
+            <TitleForm title="Let's Learn Words!" img="https://images.pexels.com/photos/132468/pexels-photo-132468.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
             <div className="learnVocabulary-container">
-                <h1>Let's Learn Words</h1>
-                <p>Here's the time to learn new words using cards!</p>
+                {/* <p>Here's the time to learn new words using cards!</p> */}
                 <form className='learnVocabulary-form'>
                     <label style={{marginRight:'10px'}}>Please, select a topic!</label>
                     <select id="topic" name="topic" onChange={handleChangeTopic}>
