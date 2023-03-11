@@ -11,6 +11,7 @@ import Modal from '../modal/Modal';
 import CreateNewVocabulary from "../createNewVocabulary/CreateNewVocabulary";
 import EditWord from '../editWord/EditWord';
 import { Link } from 'react-router-dom';
+import TitleForm from '../titleForm/TitleForm';
 
 
 const ListVocabulary = () => {
@@ -99,7 +100,8 @@ const ListVocabulary = () => {
 
   return (
     <div className='listVocabulary'>
-        <h1>The List of Words</h1>
+        <TitleForm title="The List of Words" img="https://images.pexels.com/photos/1697912/pexels-photo-1697912.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+        
         <form className='listVocabulary-form'>
             <label htmlFor="">Please, select a topic!</label>
             <select id="topic" name="topic" onChange={handleChangeTopic}>
