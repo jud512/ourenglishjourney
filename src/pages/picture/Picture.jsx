@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Picture.css'
 import Header from '../../components/header/Header'
+import CircleOption from '../../components/circleOption/CircleOption'
 
 const Picture = () => {
   return (
@@ -11,14 +12,10 @@ const Picture = () => {
       <p>You have an opportunity to choose whether you'd like to add a new image to a topic or only list them.</p>
       <div className="picture-options">
         <Link to="createpicture">
-          <div className="picture-create" >
-            <span>Add A New Image</span>
-        </div>
+          <CircleOption title="Add a New Image" background='green'/>
         </Link>
         <Link to="listpicture">
-          <div className="picture-list">
-            <span>List Images</span>
-          </div>
+          <CircleOption title="List Images" background='purple' />
         </Link>
                 
 

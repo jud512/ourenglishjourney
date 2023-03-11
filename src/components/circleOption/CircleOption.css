@@ -1,0 +1,25 @@
+.circleOption{
+    width: 160px;
+        height: 160px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        letter-spacing: 2px;
+        color: white;
+        font-weight: 500;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    
+        flex-wrap: wrap;
+        border: 2px solid;
+        text-transform: uppercase;
+        font-size: 16px;
+        
+}
+.circleOption:hover{    
+        font-weight: bold;
+        
+        -webkit-animation: pulsate-bck 1s ease-in-out both;
+        animation: pulsate-bck 1s ease-in-out both;
+}
