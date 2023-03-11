@@ -19,18 +19,18 @@ const Vocabulary = () => {
       <p className='vocabulary-instruction'>You have an opportunity to choose whether you'd like to create new vocabulary or only learn words.</p>
       <div className="vocabulary-options">
         <Link to="createvocabulary ">
-          <div className="vocabulary-create" >
+          <div className="vocabulary-create roll-in-left" >
             <span>Create New Vocabulary</span>
         </div>
         </Link>
         <Link to="listvocabulary">
-          <div className="vocabulary-list">
+          <div className="vocabulary-list roll-in-left-2">
             <span>List Vocabulary</span>
           </div>
         </Link>
         
         <Link to="learnvocabulary">
-          <div className="vocabulary-learn">
+          <div className="vocabulary-learn roll-in-left-3">
             <span>Learn Vocabulary</span> 
           </div>
         </Link>
