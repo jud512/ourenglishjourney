@@ -5,6 +5,7 @@ import { listPictures, picturesByTopicID } from '../../graphql/queries';
 import { deletePicture } from '../../graphql/mutations';
 import { useGlobalContext } from '../../context/context';
 import { MdDeleteOutline } from 'react-icons/md';
+import TitleForm from '../titleForm/TitleForm'
 
 const ListPictures = () => {
     const {topics, isAdmin} = useGlobalContext();
@@ -62,7 +63,8 @@ const ListPictures = () => {
     }, [selectedTopicId])
   return (
     <div className='listPictures'>
-        <h1>The List of Images</h1>
+        <TitleForm title="The List of Images" img="https://images.pexels.com/photos/2422255/pexels-photo-2422255.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+        
         <form className='listPictures-form'>
             <label style={{marginRight:'10px'}}>Please, select a topic!</label>
             <select id="topic" name="topic" onChange={handleChangeTopic}>

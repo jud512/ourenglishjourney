@@ -1,10 +1,12 @@
 .topic{
     text-align: center;
+    margin: 50px;
+   
 }
 
 .topic h1{
     margin: 30px 0;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
         letter-spacing: 2px;
 }
 
@@ -13,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 50px;
 }
 
 .topic-create span, .topic-list span{

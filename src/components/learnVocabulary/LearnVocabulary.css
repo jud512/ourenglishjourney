@@ -6,11 +6,24 @@
     justify-content: center;
 }
 
+.learnVocabulary-form{
+    background-color: rgb(76, 126, 76);
+    padding: 20px;
+    border-radius: 30px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.learnVocabulary-form select{
+    height: 45px;
+}
+
 .cardsContainer {
     margin: 50px auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .card{

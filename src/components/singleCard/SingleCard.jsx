@@ -14,8 +14,7 @@ const SingleCard = ({item,  handleItemSelect, selectWords, currentIdx}) => {
                         <p >{item.description}</p>
                         <p >{item.example}</p>
                     </div> 
-                    <div className='front'>              
-
+                    <div className='front'>           
                         <p className='word'>{ item.name }</p>                      
                         <p >{item.speech}</p>
                         {
@@ -31,8 +30,6 @@ const SingleCard = ({item,  handleItemSelect, selectWords, currentIdx}) => {
                         
                     </div> 
                 </div>    
-           
-
         </div>
     
   )

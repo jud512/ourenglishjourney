@@ -6,6 +6,7 @@ import axios from 'axios';
 import { createPicture } from '../../graphql/mutations';
 import ModalTop from '../modal/ModalTop';
 import Message from '../message/Message';
+import TitleForm from '../titleForm/TitleForm'
 
 const CreateNewPicture = () => {
   const {topics}= useGlobalContext();
@@ -68,7 +69,8 @@ const CreateNewPicture = () => {
   
   return (
     <div className='createNewPicture'>
-      <h1 className='createPictureTitle'>Add a New Image</h1>
+      <TitleForm title="Add a New Image" img="https://images.pexels.com/photos/2268487/pexels-photo-2268487.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+      
       <form className='createNewPicture-formItems'>
         <div className="createNewPicture-formItem">
           <label htmlFor="topic" className='createNewPicture-label'>Topic</label>

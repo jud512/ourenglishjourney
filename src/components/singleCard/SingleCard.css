@@ -1,7 +1,7 @@
 .item-single-card {
     width: 450px;
     height: 300px;
-    border: rgb(57, 10, 57) 1px solid;
+    border: rgb(25, 70, 20) 2px solid;
     background-color: rgb(202, 227, 205);
     display: flex;
     flex-direction: column;
