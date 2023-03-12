@@ -3,6 +3,7 @@ import './CreateNewTopic.css'
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { useRef, useState } from "react";
 import { createTopic } from '../../graphql/mutations';
+import TitleForm from '../titleForm/TitleForm'
 // Amplify.configure(awsconfig);
 
 const CreateNewTopic = () => {
@@ -40,8 +41,8 @@ const CreateNewTopic = () => {
     
     return (
         <div className='createNewTopic'>
-            <h1 className='createTopicTitle'>Add New Topics</h1>
-            <div className="createNewTopic">
+            <TitleForm title="Add New Topic" img="https://images.pexels.com/photos/105075/pexels-photo-105075.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+            <div className="createNewTopic-form">
                     <form action="" className='formItems'>
                         <div className="formItem">
                                 <label htmlFor="newtopic">Topic</label>
