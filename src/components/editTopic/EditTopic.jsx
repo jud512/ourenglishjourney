@@ -6,6 +6,8 @@ import { useGlobalContext } from '../../context/context'
 import ModalTop from '../modal/ModalTop';
 import Message from '../message/Message';
 import { useNavigate } from 'react-router-dom';
+import TitleForm from '../titleForm/TitleForm';
+import './EditTopic.css'
 
 export const EditTopic = () => {
     const { topics } = useGlobalContext();
@@ -50,8 +52,9 @@ export const EditTopic = () => {
     }
   return (
     <div className='edittopic'>
-        <h1>EditTopic</h1>
-        <form className="formItems">
+        <TitleForm title="Edit A Topic" img="https://images.pexels.com/photos/668553/pexels-photo-668553.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+        <div className="edittopic-container">
+            <form className="formItems">
             <div className="formItem">
                 <label htmlFor="topic">Topic</label>
                 <input type="text" id="topic" name="title" value={topic?.title} onChange={handleTopicFormChange}/>
@@ -67,6 +70,9 @@ export const EditTopic = () => {
             </div>
             <button className='btnSave' style={{width:'300px', margin: '10px auto'}}onClick={handleClickSave}>Save it into the database</button>
         </form>
+
+        </div>
+        
 
         { showMessageOK && <ModalTop shouldShowModal={showMessageOK} onRequestClose={() => setShowMessageOK(false)} 
         children={

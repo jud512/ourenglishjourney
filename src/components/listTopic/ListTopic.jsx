@@ -8,6 +8,7 @@ import {MdOutlineEdit, MdDeleteOutline} from 'react-icons/md'
 import { deleteTopic } from '../../graphql/mutations';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import TitleForm from '../../components/titleForm/TitleForm'
 
 
 const ListTopic = () => {
@@ -51,7 +52,8 @@ const ListTopic = () => {
     }, [])
   return (
     <div className='listTopic'>
-        <h1>The List of Topics</h1>
+        <TitleForm title="The List of Topics" img="https://images.pexels.com/photos/6045220/pexels-photo-6045220.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
+        
         <table>
             <thead>
                 <tr>
