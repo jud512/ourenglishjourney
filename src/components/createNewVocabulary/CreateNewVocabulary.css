@@ -28,7 +28,7 @@
     position: relative;
     display: flex;
     width: 550px;
-    height: 3em;
+    height: 3.2em;
     line-height: 3;
     background: #A0B8C6;
     overflow: hidden;
@@ -37,6 +37,10 @@
     border: none;
     letter-spacing: 1px;
     
+}
+
+.textarea{
+    height: 10em;
 }
 
 .formItem-select::after{
@@ -56,7 +60,7 @@
     position: relative;
     display: flex;
     width: 550px;
-    height: 3em;
+    height: 3.5em;
     line-height: 3;
     background: #A0B8C6;
     overflow: hidden;
@@ -95,9 +99,7 @@
     background: #A0B8C6;
     pointer-events: none;
     cursor: pointer;
-
     transition: .25s all ease;
-
 }
 
 .formItem-select:hover::after {
@@ -115,18 +117,20 @@
     text-align: center;
 }
 
-.formItem input {
-    width: 100%;    
+.formItem input, .formItem textarea {
+    width: 100%;
+    height: 100%;    
     border: solid 1px lightgray;
     padding-left: 8px;
 }
 
-.formItem textarea{
-    
-    height: 500px;
-    border: none;
-    
+
+textarea:focus,
+input:focus {
+    outline: none;
 }
+
+
 
 
 .btnSave {
