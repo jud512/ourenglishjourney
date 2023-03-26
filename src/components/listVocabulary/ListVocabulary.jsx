@@ -103,16 +103,19 @@ const ListVocabulary = () => {
         <TitleForm title="The List of Words" img="https://images.pexels.com/photos/1697912/pexels-photo-1697912.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
         
         <form className='listVocabulary-form'>
-            <label htmlFor="">Please, select a topic!</label>
-            <select id="topic" name="topic" onChange={handleChangeTopic}>
-                {
-                    topics?.map( item => (
-                        <option key={item.id} value={item.id}>
-                            {item.title}
-                        </option>
-                    ))
-                }
-            </select>
+            <div className="formItem-select">
+                <label htmlFor="topic" >Please, select a topic!</label>
+                <select id="topic" name="topic" onChange={handleChangeTopic}>
+                    {
+                        topics?.map( item => (
+                            <option key={item.id} value={item.id}>
+                                {item.title}
+                            </option>
+                        ))
+                    }
+                </select>
+            </div>
+            
         </form>
        {/* { <p>SELECTED TOPICID: {selectedTopicId}</p>} */}
         <table>
