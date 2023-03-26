@@ -9,6 +9,7 @@ enum BookType {
   BOOK3
   NO_BOOK
   ENGLISH_VOCABULARY_IN_USE
+  BUSINESS_ENGLISH_UPPER_INTERMEDIATE
 }
 
 type Topic @model {

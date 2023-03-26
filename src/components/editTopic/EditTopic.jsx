@@ -66,6 +66,8 @@ export const EditTopic = () => {
                     <option value="BOOK2" >BOOK2</option>
                     <option value="BOOK3" >BOOK3</option>
                     <option value="NO_BOOK" >NO_BOOK</option>
+                    <option value="ENGLISH_VOCABULARY_IN_USE" >ENGLISH_VOCABULARY_IN_USE</option>
+                    <option value="BUSINESS_ENGLISH_UPPER_INTERMEDIATE" >BUSINESS_ENGLISH_UPPER_INTERMEDIATE</option>
                 </select>
             </div>
             <button className='btnSave' style={{width:'300px', margin: '10px auto'}}onClick={handleClickSave}>Save it into the database</button>
