@@ -25,8 +25,22 @@
     gap: 10px;
 }
 
+.createNewPicture-formItem {
+    width: 100%;
+}
+
+.createNewPicture-formItem-select{
+    width: 550px;
+    margin: 20px auto;
+}
+
 .createNewPicture-formItem input {
     width: 100%;
+}
+
+.createNewPicture-formItem label, .createNewPicture-formItem-select label{
+    text-align: center;
+    
 }
 
 .createNewPicture-label{

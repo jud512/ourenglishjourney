@@ -84,6 +84,7 @@
     border: none;
     cursor: pointer;
     width: 100%;
+    height: 100%;
 }
 
 .formItem-select select:focus {

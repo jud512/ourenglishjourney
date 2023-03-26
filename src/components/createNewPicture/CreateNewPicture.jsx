@@ -71,9 +71,9 @@ const CreateNewPicture = () => {
     <div className='createNewPicture'>
       <TitleForm title="Add a New Image" img="https://images.pexels.com/photos/2268487/pexels-photo-2268487.jpeg?auto=compress&cs=tinysrgb&w=1600"/>
       
-      <form className='createNewPicture-formItems'>
-        <div className="createNewPicture-formItem">
-          <label htmlFor="topic" className='createNewPicture-label'>Topic</label>
+      <form className='createNewPicture-formItems formItems'>
+        <div className="createNewPicture-formItem-select formItem-select">
+          <label htmlFor="topic" className='createNewPicture-label '>Topic</label>
             <select id="topic" name="topic" onChange={handleChangeTopic}>
               {
                 topics?.map(item => (
@@ -82,15 +82,15 @@ const CreateNewPicture = () => {
                 }
             </select>
         </div>
-        <div className="createNewPicture-formItem">
+        <div className="createNewPicture-formItem formItem">
           <label htmlFor="title" className='createNewPicture-label'>Title</label>
           <input type="text" id='image' value={imageTitle} onChange={handleChangeImageTitle}/>
         </div>
-        <div className="createNewPicture-formItem">
+        <div className="createNewPicture-formItem formItem">
           <label htmlFor="image" className='createNewPicture-label'>ImageURL</label>
           <input type="text" id='image' value={imageUrl} onChange={handleChangeImageUrl}/>
         </div>
-        <button className='btnSave' onClick={handleClickSave}>Save it into the database</button>
+        <button className='createNewVocabulary-btnSave' onClick={handleClickSave}>Save it into the database</button>
       </form>
 
        { messageOK && <ModalTop shouldShowModal={messageOK} onRequestClose={() => 
